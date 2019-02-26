@@ -1,7 +1,6 @@
 function AddObject(name2){
 	console.log("run");
 	var loader = new THREE.OBJLoader();
-	loader.setPath('/SurfaceRender/data/');
 	loader.load(name, function ( object ) {
 		scene.add( object );},
 	function ( xhr ) {
