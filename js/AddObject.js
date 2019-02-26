@@ -1,6 +1,6 @@
 function AddObject(name2){
 	var loader = new THREE.OBJLoader();
-	loader.load(name, function ( object ) {
+	loader.load(name2, function ( object ) {
 		scene.add( object );
 		console.log("object loaded");},
 	function ( xhr ) {
