@@ -1,8 +1,10 @@
 function AddObject(name2){
-	var loader = new THREE.OBJLoader();
-	loader.load(name2, function ( object ) {
-		scene.add( object );
-		console.log("object loaded");},
+	console.log("run");
+	var loader = new THREE.ObjectLoader();
+	loader.load(name, function ( object ) {
+		object.castShadow() = true;
+		console.log(object.children.size);
+		scene.add( object );},
 	function ( xhr ) {
 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 	},
