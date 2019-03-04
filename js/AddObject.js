@@ -5,6 +5,7 @@ function AddObject(name2){
     	object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh ) {
             	child.material.side = THREE.DoubleSide;
+            	child.material.color = 0x808080;
         	}
     	} );
 		scene.add( object );},
