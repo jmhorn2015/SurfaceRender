@@ -1,5 +1,5 @@
 function AddObject(name2){
-	$('console').update("New text2");
+	$(console).update("New text2");
 	var loader = new THREE.OBJLoader();
 	loader.load(name2, function ( object ) {
     	object.traverse( function ( child ) {
