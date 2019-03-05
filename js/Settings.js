@@ -29,7 +29,7 @@ function Light(num){
 		var object = arr[x];
 		if(object.isPointLight){
 			console.log("run");
-			object.position.set(num, 10, 0);
+			object.position.set(num, -10 + Math.abs(num), 0);
 		}
 	}
 };
