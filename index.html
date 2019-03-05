@@ -29,9 +29,9 @@
 		<div id='data'></div>
 		<div id = 'UI'>
 			<p style="margin-right:400px;">Render Settings:</p>
-			<label for="lineText">Generated lines:</label>
-			<input type="text" id="lineText" name="lineText" />
-			<div id="lineslider"></div>
+			<label for="TText">Transparency:</label>
+			<input type="text" id="TText" name="TText" />
+			<div id="Tslider"></div>
 			<div id= 'console' >test5</div>
 		</div>
 		<script>
@@ -42,21 +42,21 @@
 			AddObject("data/surface1_2.obj");
 			AddObject("data/surface2_1.obj");
 			AddObject("data/surface2_2.obj");
-			var num = 3;
+			var num = .5;
 			var prevNum = num;
 			var ischanging = false;
 			var isfilled = false;
 			$(UI).innerHeight(window.innerHeight);
 			$(UI).innerWidth(window.innerWidth/5);
-			$( "#lineText" ).val( 3 );
+			$( "#TText" ).val( .5 );
 			$(function(){
-				$( "#lineslider" ).slider({
+				$( "#Tslider" ).slider({
 					range: "max",
-					min: 1,
-					max: 20,
-					value: 3,
+					min: .1,
+					max: 1,
+					value: .5,
 					slide: function( event, ui ) {
-						$( "#lineText" ).val( ui.value );
+						$( "#TText" ).val( ui.value );
 						num = ui.value;
 					}
 				});
@@ -64,6 +64,7 @@
 			var generateLoop = setInterval(function(){
 				if(ischanging & num == prevNum){
 					ischanging = false;
+					Transparency(num);
 				}
 				else if(num != prevNum){
 					ischanging = true;
