@@ -9,6 +9,6 @@ function Transparency(num){
 				child.material.transparent = true;
 				child.material.opacity = num;
         	}
-    	} 
+    	};
 	}
 };
