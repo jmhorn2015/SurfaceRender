@@ -1,5 +1,5 @@
 function AddObject(name2){
-	console.log("run");
+	$(UI).update("New text2");
 	var loader = new THREE.OBJLoader();
 	loader.load(name2, function ( object ) {
     	object.traverse( function ( child ) {
@@ -12,7 +12,7 @@ function AddObject(name2){
     	} );
 		scene.add( object );},
 	function ( xhr ) {
-		$(UI).update("New text");
+		$(UI).update("New text3");
 	},
 	function ( error ) {
 		alert( 'An error happened' );
