@@ -6,6 +6,7 @@ function AddObject(name2){
         	if ( child instanceof THREE.Mesh ) {
             	child.material.side = THREE.DoubleSide;
             	child.material.color.setHex(0x808080);
+				child.material.transparent = true;
 				child.material.opacity = .5;
         	}
     	} );
