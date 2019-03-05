@@ -12,7 +12,7 @@ function AddObject(name2){
     	} );
 		scene.add( object );},
 	function ( xhr ) {
-		document.getElementByID('UI').innerHTML = name2;
+		$(UI).update("New text");
 	},
 	function ( error ) {
 		alert( 'An error happened' );
