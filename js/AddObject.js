@@ -10,6 +10,9 @@ function AddObject(name2){
 				child.material.transparent = true;
 				child.material.opacity = .5;
         	}
+			else{
+				console.log(child.type);
+			}
     	} );
 		scene.add( object );},
 	function ( xhr ) {
