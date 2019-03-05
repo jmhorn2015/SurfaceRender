@@ -41,7 +41,7 @@
 			<input type="text" id="LText" name="LText" />
 			<div id="Lslider"></div>
 			
-			<div id= 'console' >test4</div>
+			<div id= 'console' >test</div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");
@@ -131,7 +131,7 @@
 				//Light
 				if(ischanging3 & num3 == prevNum3){
 					ischanging3 = false;
-					Hue(num3/100);
+					Light(num3/100);
 				}
 				else if(num3 != prevNum3){
 					ischanging3 = true;
