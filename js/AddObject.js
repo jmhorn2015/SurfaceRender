@@ -11,7 +11,14 @@ function AddObject(name2){
 				child.material.opacity = .5;
         	}
 			else{
-				console.log(child.type);
+				child.traverse( function ( child2 ) {
+					if ( child2 instanceof THREE.Mesh ) {
+					console.log("found mesh");
+					}
+					else{
+						console.log(child2.type);
+					}
+				});
 			}
     	} );
 		scene.add( object );},
