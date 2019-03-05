@@ -1,6 +1,6 @@
 function Transparency(num){
 	var arr = scene.children;
-	for( int x = 0; x < arr.length; x++){
+	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh ) {
@@ -9,6 +9,6 @@ function Transparency(num){
 				child.material.transparent = true;
 				child.material.opacity = num;
         	}
-    	};
+    	});
 	}
 };
