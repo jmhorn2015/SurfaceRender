@@ -2,7 +2,6 @@ function AddObject(name2){
 	console.log("run");
 	var loader = new THREE.OBJLoader();
 	loader.load(name2, function ( object ) {
-		document.getElementsByTagName('div')[1].innerHTML = name2;
     	object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh ) {
             	child.material.side = THREE.BackSide;
@@ -13,7 +12,7 @@ function AddObject(name2){
     	} );
 		scene.add( object );},
 	function ( xhr ) {
-		//console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+		document.getElementByID('UI').innerHTML = name2;
 	},
 	function ( error ) {
 		alert( 'An error happened' );
