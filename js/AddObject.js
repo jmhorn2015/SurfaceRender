@@ -4,6 +4,7 @@ function AddObject(name2){
 	loader.load(name2, function ( object ) {
     	object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh ) {
+				document.getElementsByTagName('div')[1].innerHTML = name2;
             	child.material.side = THREE.BackSide;
             	child.material.color.setHex(0x808080);
 				child.material.transparent = true;
