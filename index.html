@@ -32,17 +32,17 @@
 			<label for="lineText">Generated lines:</label>
 			<input type="text" id="lineText" name="lineText" />
 			<div id="lineslider"></div>
-			<div id= 'console' >test2</div>
+			<div id= 'console' >test3</div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");
 			GenerateCurves("data/seeding_curve_2.txt");
-			$(console).update("New text");
+			document.getElementByID('console').innerHTML = "test";
 			AddObject("data/outerbox.obj");
 			AddObject("data/surface1_1.obj");
-			//AddObject("data/surface1_2.obj");
-			//AddObject("data/surface2_1.obj");
-			//AddObject("data/surface2_2.obj");
+			AddObject("data/surface1_2.obj");
+			AddObject("data/surface2_1.obj");
+			AddObject("data/surface2_2.obj");
 			var num = 3;
 			var prevNum = num;
 			var ischanging = false;
