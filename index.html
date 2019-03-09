@@ -10,12 +10,10 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
 				integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 				crossorigin="anonymous"></script>
-		<!--JQuery UI-->
-		<script
-			src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-			integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-			crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="css/jquery-ui.css">
+		<!--Bootstrap-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<!--Three.js-->
 		<script src="js/three.js"></script>
 		<script src="js/TrackballControls.js"></script>
@@ -29,9 +27,11 @@
 		<div id='data'></div>
 		<div id = 'UI'>
 			<p style="margin-right:400px;">Render Settings:</p>
-			<label for="TText">Transparency:</label>
+			<!--<label for="TText">Transparency:</label>
 			<input type="text" id="TText" name="TText" />
-			<div id="Tslider"></div>
+			<div id="Tslider"></div>-->
+			<label for="TTest">Transparency:</label>
+			<input type="text" class="custom-range" min="0" max="100" step="1" id="TText">
 			
 			<label for="HText">Color:</label>
 			<input type="text" id="HText" name="HText" />
@@ -40,8 +40,7 @@
 			<label for="LText">Light Location:</label>
 			<input type="text" id="LText" name="LText" />
 			<div id="Lslider"></div>
-			
-			<div id= 'console' >test2</div>
+			<div id= 'console' >test</div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");
@@ -53,15 +52,15 @@
 			AddObject("data/surface2_2.obj");
 			
 			//Transparency
-			var num = .5;
+			var num = 50;
 			var prevNum = num;
 			var ischanging = false;
 			//Hue
-			var num2 = .5;
+			var num2 = 50;
 			var prevNum2 = num2;
 			var ischanging2 = false;
 			//Light
-			var num3 = .5;
+			var num3 = 50;
 			var prevNum3 = num3;
 			var ischanging3 = false;
 			
