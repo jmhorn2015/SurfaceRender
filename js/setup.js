@@ -32,6 +32,7 @@ var light = new THREE.AmbientLight(0x777777);
 scene.add(light);
 var light2 = new THREE.PointLight(0xffffff);
 light2.position.set(0,-10,0)
+light2.shadowBias = -0.001;
 scene.add(light2);
 
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
