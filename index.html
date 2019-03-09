@@ -35,8 +35,8 @@
 			<label for="HText">Color:  </label>
 			<input id="HText" class="no-border" type="range" value="50" min="0" max="100" />
 			<label for="LText">Light Location:  </label>
-			<input id="LText" class="no-border" type="range" value="50" min="0" max="100" />
-			<div id= 'console' >test</div>
+			<input id="LText" class="no-border" type="range" value="0" min="-10" max="10" />
+			<div id= 'console' >test2</div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");
@@ -73,7 +73,7 @@
 			var Lslider = $("#LText");
 			Lslider.on("input change", function(e) {
 				num3 = $(this).val();
-				Light(num3/100);
+				Light(num3);
 			})
 		</script>
 	</body>
