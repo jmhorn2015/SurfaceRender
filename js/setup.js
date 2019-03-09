@@ -32,6 +32,13 @@ var light = new THREE.AmbientLight(0x777777);
 scene.add(light);
 var light2 = new THREE.PointLight(0xffffff);
 light2.position.set(0,-10,0)
+light2.shadowMapWidth = 2048;
+light2.shadowMapHeight = 2048;
+
+light2.shadowCameraNear = 100;
+light2.shadowCameraFar = 800;
+
+light2.shadowCameraFov = 60;
 light2.shadowBias = -0.001;
 scene.add(light2);
 
