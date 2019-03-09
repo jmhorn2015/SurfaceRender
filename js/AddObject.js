@@ -1,7 +1,6 @@
 function AddObject(name2){
 	var loader = new THREE.OBJLoader();
 	loader.load(name2, function ( object ) {
-		console.log(name2);
     	object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh ) {
 				console.log("found mesh");
@@ -13,10 +12,8 @@ function AddObject(name2){
 			else{
 				child.traverse( function ( child2 ) {
 					if ( child2 instanceof THREE.Mesh ) {
-					console.log("found mesh");
 					}
 					else{
-						console.log(child2.type);
 					}
 				});
 			}
