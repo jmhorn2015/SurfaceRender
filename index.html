@@ -71,6 +71,7 @@
 			var Tslider = $("#TText");
 			Tslider.on("input change", function(e) {
 				num = $(this).val();
+				Transparency(num/100);
 			})
 			//Hue
 			$( "#HText" ).val( 50 );
