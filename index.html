@@ -68,19 +68,10 @@
 			$(UI).innerWidth(window.innerWidth/5);
 			
 			//Transparency
-			$( "#TText" ).val( 50 );
-			$(function(){
-				$( "#Tslider" ).slider({
-					range: "max",
-					min: 1,
-					max: 100,
-					value: 50,
-					slide: function( event, ui ) {
-						$( "#TText" ).val( ui.value );
-						num = ui.value;
-					}
-				});
-			} );
+			var Tslider = $("#TText");
+			Tslider.on("input change", function(e) {
+				num = $(this).val();
+			})
 			//Hue
 			$( "#HText" ).val( 50 );
 			$(function(){
@@ -110,7 +101,7 @@
 				});
 			} );
 			
-			var generateLoop = setInterval(function(){
+			/*var generateLoop = setInterval(function(){
 				//Transparency
 				if(ischanging & num == prevNum){
 					ischanging = false;
@@ -138,7 +129,7 @@
 				prevNum = num;
 				prevNum2 = num2;
 				prevNum3 = num3;
-			}, 50);
+			}, 50);*/
 		</script>
 	</body>
 </html>
