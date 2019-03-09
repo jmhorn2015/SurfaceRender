@@ -31,12 +31,18 @@
 			<input type="text" id="TText" name="TText" />
 			<div id="Tslider"></div>-->
 			<label for="TText">Transparency:  </label>
-			<input id="TText" class="no-border" type="range" value="50" min="0" max="100" />
+			<form class="range-field">
+				<input id="TText" class="no-border" type="range" value="50" min="0" max="100" />
+			</form>
 			<label for="HText">Color:  </label>
-			<input id="HText" class="no-border" type="range" value="50" min="0" max="100" />
+			<form class="range-field">
+				<input id="HText" class="no-border" type="range" value="50" min="0" max="100" />
+			</form>
 			<label for="LText">Light Location:  </label>
-			<input id="LText" class="no-border" type="range" value="0" min="-10" max="10" />
-			<div id= 'console' >test2</div>
+			<form class="range-field">
+				<input id="LText" class="no-border" type="range" value="0" min="-10" max="10" />
+			</form>
+			<div id= 'console' >test</div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");
