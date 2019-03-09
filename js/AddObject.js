@@ -4,7 +4,7 @@ function AddObject(name2){
     	object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh ) {
 				console.log("found mesh");
-            	child.material.side = THREE.BackSide;
+            	child.material.side = THREE.DoubleSide;
             	child.material.color.setHex(0x808080);
 				child.material.transparent = true;
 				child.material.opacity = .5;
