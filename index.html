@@ -30,17 +30,13 @@
 			<!--<label for="TText">Transparency:</label>
 			<input type="text" id="TText" name="TText" />
 			<div id="Tslider"></div>-->
-			<label for="TText">Transparency:</label>
+			<label for="TText">Transparency:  </label>
 			<input id="TText" class="no-border" type="range" value="50" min="0" max="100" />
-			
-			<label for="HText">Color:</label>
-			<input type="text" id="HText" name="HText" />
-			<div id="Hslider"></div>
-			
-			<label for="LText">Light Location:</label>
-			<input type="text" id="LText" name="LText" />
-			<div id="Lslider"></div>
-			<div id= 'console' >test3</div>
+			<label for="HText">Color:  </label>
+			<input id="HText" class="no-border" type="range" value="50" min="0" max="100" />
+			<label for="LText">Light Location:  </label>
+			<input id="LText" class="no-border" type="range" value="50" min="0" max="100" />
+			<div id= 'console' >test</div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");
@@ -53,16 +49,10 @@
 			
 			//Transparency
 			var num = 50;
-			var prevNum = num;
-			var ischanging = false;
 			//Hue
 			var num2 = 50;
-			var prevNum2 = num2;
-			var ischanging2 = false;
 			//Light
 			var num3 = 50;
-			var prevNum3 = num3;
-			var ischanging3 = false;
 			
 			$(UI).innerHeight(window.innerHeight);
 			$(UI).innerWidth(window.innerWidth/5);
@@ -72,66 +62,19 @@
 			Tslider.on("input change", function(e) {
 				num = $(this).val();
 				Transparency(num/100);
-				console.log("change");
 			})
 			//Hue
-			$( "#HText" ).val( 50 );
-			$(function(){
-				$( "#Hslider" ).slider({
-					range: "max",
-					min: 1,
-					max: 100,
-					value: 50,
-					slide: function( event, ui ) {
-						$( "#HText" ).val( ui.value );
-						num2 = ui.value;
-					}
-				});
-			} );
+			var Hslider = $("#HText");
+			Hslider.on("input change", function(e) {
+				num2 = $(this).val();
+				Hue(num2/100);
+			})
 			//Light
-			$( "#LText" ).val( 0 );
-			$(function(){
-				$( "#Lslider" ).slider({
-					range: "max",
-					min: -10,
-					max: 10,
-					value: 0,
-					slide: function( event, ui ) {
-						$( "#LText" ).val( ui.value );
-						num3 = ui.value;
-					}
-				});
-			} );
-			
-			/*var generateLoop = setInterval(function(){
-				//Transparency
-				if(ischanging & num == prevNum){
-					ischanging = false;
-					Transparency(num/100);
-				}
-				else if(num != prevNum){
-					ischanging = true;
-				}
-				// Hue
-				if(ischanging2 & num2 == prevNum2){
-					ischanging2 = false;
-					Hue(num2/100);
-				}
-				else if(num2 != prevNum2){
-					ischanging2 = true;
-				}
-				//Light
-				if(ischanging3 & num3 == prevNum3){
-					ischanging3 = false;
-					Light(num3);
-				}
-				else if(num3 != prevNum3){
-					ischanging3 = true;
-				}
-				prevNum = num;
-				prevNum2 = num2;
-				prevNum3 = num3;
-			}, 50);*/
+			var Lslider = $("#LText");
+			Lslider.on("input change", function(e) {
+				num3 = $(this).val();
+				Light(num3/100);
+			})
 		</script>
 	</body>
 </html>
