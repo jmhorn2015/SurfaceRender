@@ -1,8 +1,4 @@
 function AddObject(name2){
-	$("#loading").addClass('spinner-border');
-	console.log("add");
-	loaded = false;
-	hasloaded = false;
 	var loader = new THREE.OBJLoader();
 	loader.load(name2, function ( object ) {
     	object.traverse( function ( child ) {
@@ -19,10 +15,11 @@ function AddObject(name2){
     	} );
 		object.name = "surface";
 		scene.add( object );
-		loaded = true;
+		loading = false;
+		console.log("end");
 		},
 	function ( xhr ) {
-		
+		loading = true;
 	},
 	function ( error ) {
 		alert( 'An error happened' );

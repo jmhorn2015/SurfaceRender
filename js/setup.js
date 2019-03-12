@@ -1,5 +1,4 @@
-var loaded = false;
-var hasloaded = false;
+var loading = false;
 
 var three = $("<div id = 'three'></div>");
 $("body").append(three);
@@ -69,10 +68,11 @@ camera.position.set( 0, 0, 2);
 controls.update();
 
 var animate = function () {
-	if (loaded == true & hasloaded == false){
-		console.log("remove");
+	if(loading){
+		$("#loading").addClass('spinner-border');
+	}
+	else{
 		$("#loading").removeClass('spinner-border');
-		hasloaded = true;
 	}
 	requestAnimationFrame( animate );
 	controls.update();
