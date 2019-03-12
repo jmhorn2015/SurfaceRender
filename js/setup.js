@@ -31,7 +31,6 @@ var geometryP = new THREE.PlaneGeometry(10,10);
 var materialP = new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } );
 var plane = new THREE.Mesh( geometryP, materialP );
 plane.position.set(0, -5, 0);
-plane.rotation.set(-90,0,0);
 plane.receiveShadow = true;
 scene.add( plane );
 

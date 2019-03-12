@@ -28,13 +28,13 @@
 		<div id = 'UI'>
 			<p style="margin-right:400px;">Render Settings:</p>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				<label class="btn btn-secondary active">
+				<label class="btn btn-secondary active" id = "phong">
 					<input type="radio" name="options" id="option1" autocomplete="off" checked> Phong
 				</label>
-				<label class="btn btn-secondary">
+				<label class="btn btn-secondary" id = "basic">
 					<input type="radio" name="options" id="option2" autocomplete="off"> Basic
 				</label>
-				<label class="btn btn-secondary">
+				<label class="btn btn-secondary" id = "lam" >
 					<input type="radio" name="options" id="option3" autocomplete="off"> Lambert
 				</label>
 			</div>
@@ -53,7 +53,7 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test5</div>
+			<div id= 'console' >test</div>
 		</div>
 		<script>
 			$("#loading").addClass('spinner-border');
@@ -77,15 +77,15 @@
 			$(UI).innerWidth(window.innerWidth/5);
 			
 			//Material
-			var PMesh = $("#option1");
+			var PMesh = $("#phong");
 			PMesh.on("click", function(e) {
 				Material(0);
 			})
-			var BMesh = $("#option2");
+			var BMesh = $("#basic");
 			BMesh.on("click", function(e) {
 				Material(1);
 			})
-			var LMesh = $("#option3");
+			var LMesh = $("#lam");
 			LMesh.on("click", function(e) {
 				Material(2);
 			})
