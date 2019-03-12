@@ -1,4 +1,7 @@
 function AddObject(name2){
+	$("#loading").addClass('spinner-border');
+	loaded = false;
+	hasloaded = false;
 	var loader = new THREE.OBJLoader();
 	loader.load(name2, function ( object ) {
     	object.traverse( function ( child ) {
@@ -15,7 +18,9 @@ function AddObject(name2){
 				//object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
 			}
     	} );
+		object.name = "surface";
 		scene.add( object );
+		loaded = true;
 		},
 	function ( xhr ) {
 		

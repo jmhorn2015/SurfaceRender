@@ -1,3 +1,6 @@
+var loaded = false;
+var hasloaded = false;
+
 var three = $("<div id = 'three'></div>");
 $("body").append(three);
 $(three).innerHeight(window.innerHeight);
@@ -66,6 +69,10 @@ camera.position.set( 0, 0, 2);
 controls.update();
 
 var animate = function () {
+	if (loaded == true & hasloaded == false){
+		$("#loading").removeClass('spinner-border');
+		hasloaded = true;
+	}
 	requestAnimationFrame( animate );
 	controls.update();
 	camera2.position.copy( camera.position );

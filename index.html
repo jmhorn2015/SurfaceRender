@@ -53,10 +53,9 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test</div>
+			<div id= 'console' >test2</div>
 		</div>
 		<script>
-			$("#loading").addClass('spinner-border');
 			GenerateCurves("data/seeding_curve_1.txt");
 			GenerateCurves("data/seeding_curve_2.txt");
 			AddObject("data/outerbox.obj");
@@ -64,7 +63,6 @@
 			AddObject("data/surface1_2.obj");
 			AddObject("data/surface2_1.obj");
 			AddObject("data/surface2_2.obj");
-			$("#loading").removeClass('spinner-border');
 			
 			//Transparency
 			var num = 50;

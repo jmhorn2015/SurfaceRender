@@ -4,7 +4,7 @@ function Transparency(num){
 		var object = arr[x];
 		console.log(object.name);
 		object.traverse( function ( child ) {
-        	if ( child instanceof THREE.Mesh ) {
+        	if ( child instanceof THREE.Mesh & object.name == "surface") {
 				child.material.opacity = num;
         	}
     	});
