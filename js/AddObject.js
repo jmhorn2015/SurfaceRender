@@ -11,14 +11,14 @@ function AddObject(name2){
 				child.material.opacity = .5;
 				child.rotation.set(-90,0,0);
         	}
-			else if (child.isMaterial()){
+			else{
 				var temp = object;
 				console.log(name2);
 				//object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
 			}
     	} );
 		scene.add( object );
-		$("#loading").removeClass('spinner-border');},
+		},
 	function ( xhr ) {
 		
 	},
@@ -26,4 +26,5 @@ function AddObject(name2){
 		alert( 'An error happened' );
 	}
 	);
+	$("#loading").removeClass('spinner-border');
 };
