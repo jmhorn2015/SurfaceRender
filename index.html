@@ -53,9 +53,10 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>"
 			</div>
-			<div id= 'console' >test3</div>
+			<div id= 'console' >test4</div>
 		</div>
 		<script>
+			$("#loading").addClass('spinner-border');
 			GenerateCurves("data/seeding_curve_1.txt");
 			GenerateCurves("data/seeding_curve_2.txt");
 			AddObject("data/outerbox.obj");
@@ -63,6 +64,7 @@
 			AddObject("data/surface1_2.obj");
 			AddObject("data/surface2_1.obj");
 			AddObject("data/surface2_2.obj");
+			$("#loading").removeClass('spinner-border');
 			
 			//Transparency
 			var num = 50;
@@ -74,6 +76,19 @@
 			$(UI).innerHeight(window.innerHeight);
 			$(UI).innerWidth(window.innerWidth/5);
 			
+			//Material
+			var PMesh = $("#option1");
+			PMesh.on("input change", function(e) {
+				Material(0);
+			})
+			var BMesh = $("#option2");
+			BMesh.on("input change", function(e) {
+				Material(1);
+			})
+			var LMesh = $("#option3");
+			LMesh.on("input change", function(e) {
+				Material(2);
+			})
 			//Transparency
 			var Tslider = $("#TText");
 			Tslider.on("input change", function(e) {

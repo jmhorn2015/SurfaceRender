@@ -34,7 +34,7 @@ function Light(num){
 	}
 };
 function Material(num){
-	var arr = scene.children;
+	/*var arr = scene.children;
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		object.traverse( function ( child ) {
@@ -42,7 +42,8 @@ function Material(num){
             	
         	}
     	});
-	}
+	}*/
+	console.log(num);
 };
 function Texture(num){
 	var arr = scene.children;

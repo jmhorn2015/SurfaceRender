@@ -1,5 +1,4 @@
 function AddObject(name2){
-	$("#loading").addClass('spinner-border');
 	var loader = new THREE.OBJLoader();
 	loader.load(name2, function ( object ) {
     	object.traverse( function ( child ) {
