@@ -49,9 +49,9 @@ function Material(num){
 						break;
 				}
 				child.material.side = THREE.BackSide;
-            	child.material.color = oldMat;
+            	//child.material.color = oldMat;
 				child.material.transparent = true;
-				child.material.opacity = oldMat.opacity;
+				//child.material.opacity = oldMat.opacity;
         	}
     	});
 	}
