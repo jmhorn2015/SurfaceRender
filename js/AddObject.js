@@ -10,14 +10,11 @@ function AddObject(name2){
 				child.material.opacity = .5;
         	}
 			else{
-				child.traverse( function ( child2 ) {
-					if ( child2 instanceof THREE.Mesh ) {
-					}
-					else{
-					}
-				});
+				var temp = object;
+				object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
 			}
     	} );
+		object.rotation.set(-90,0,0);
 		scene.add( object );},
 	function ( xhr ) {
 		
