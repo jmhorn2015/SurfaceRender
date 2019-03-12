@@ -5,11 +5,13 @@ function AddObject(name2){
     	object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh ) {
 				console.log("found mesh");
-            	child.material.side = THREE.DoubleSide;
+            	child.material.side = THREE.BackSide;
             	child.material.color.setHex(0x808080);
 				child.material.transparent = true;
 				child.material.opacity = .5;
-				child.rotation.set(-90,0,0);
+        	}
+			else if ( child instanceof THREE.Geometry ) {
+				console.log("found geo");
         	}
 			else{
 				var temp = object;
