@@ -1,5 +1,6 @@
 function AddObject(name2){
 	$("#loading").addClass('spinner-border');
+	console.log("add");
 	loaded = false;
 	hasloaded = false;
 	var loader = new THREE.OBJLoader();
@@ -10,11 +11,9 @@ function AddObject(name2){
             	child.material.color.setHex(0x808080);
 				child.material.transparent = true;
 				child.material.opacity = .5;
-				console.log(child.material.type)
         	}
 			else{
 				var temp = object;
-				console.log(temp.type);
 				//object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
 			}
     	} );

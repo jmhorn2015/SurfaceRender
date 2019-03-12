@@ -33,7 +33,7 @@ circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
 var geometryP = new THREE.PlaneGeometry(10,10);
 var materialP = new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } );
 var plane = new THREE.Mesh( geometryP, materialP );
-plane.position.set(0, -5, 0);
+plane.position.set(0, 0, -2);
 plane.receiveShadow = true;
 scene.add( plane );
 
@@ -70,6 +70,7 @@ controls.update();
 
 var animate = function () {
 	if (loaded == true & hasloaded == false){
+		console.log("remove");
 		$("#loading").removeClass('spinner-border');
 		hasloaded = true;
 	}

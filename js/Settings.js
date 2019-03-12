@@ -2,7 +2,6 @@ function Transparency(num){
 	var arr = scene.children;
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
-		console.log(object.name);
 		object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh & object.name == "surface") {
 				child.material.opacity = num;
@@ -15,7 +14,7 @@ function Hue(num){
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		object.traverse( function ( child ) {
-        	if ( child instanceof THREE.Mesh ) {
+        	if ( child instanceof THREE.Mesh & object.name == "surface") {
             	child.material.color.setHSL(num, 1, .5);
         	}
     	});
@@ -32,15 +31,30 @@ function Light(num){
 	}
 };
 function Material(num){
-	/*var arr = scene.children;
+	var arr = scene.children;
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh ) {
-            	
+				var oldMat = child.material;
+            	switch(num){
+					case 0:
+						child.material = new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
+						break;
+					case 1:
+						child.material = new THREE.MeshBasicMaterial( { color: 0xffffff, dithering: true } ));
+						break;
+					case 2:
+						child.material = new THREE.MeshLambertMaterial( { color: 0xffffff, dithering: true } ));
+						break;
+				}
+				child.material.side = THREE.BackSide;
+            	child.material.color = oldMat;
+				child.material.transparent = true;
+				child.material.opacity = oldMat.opacity;
         	}
     	});
-	}*/
+	}
 	console.log(num);
 };
 function Texture(num){
@@ -48,7 +62,7 @@ function Texture(num){
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		object.traverse( function ( child ) {
-        	if ( child instanceof THREE.Mesh ) {
+        	if ( child instanceof THREE.Mesh & object.name == "surface") {
             	
         	}
     	});
@@ -59,7 +73,7 @@ function Shadow(bool){
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		object.traverse( function ( child ) {
-        	if ( child instanceof THREE.Mesh ) {
+        	if ( child instanceof THREE.Mesh & object.name == "surface") {
 				
         	}
     	});
@@ -70,7 +84,7 @@ function Reflection(bool){
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		object.traverse( function ( child ) {
-        	if ( child instanceof THREE.Mesh ) {
+        	if ( child instanceof THREE.Mesh & object.name == "surface") {
 				
         	}
     	});
