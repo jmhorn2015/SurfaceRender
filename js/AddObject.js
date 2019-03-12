@@ -4,7 +4,6 @@ function AddObject(name2){
 	loader.load(name2, function ( object ) {
     	object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh ) {
-				console.log("found mesh");
             	child.material.side = THREE.BackSide;
             	child.material.color.setHex(0x808080);
 				child.material.transparent = true;
@@ -12,6 +11,9 @@ function AddObject(name2){
         	}
 			else if ( child instanceof THREE.Geometry ) {
 				console.log("found geo");
+        	}
+			else if ( child instanceof THREE.BufferGeometry ) {
+				console.log("found buff geo");
         	}
 			else{
 				var temp = object;
