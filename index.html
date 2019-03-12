@@ -27,9 +27,17 @@
 		<div id='data'></div>
 		<div id = 'UI'>
 			<p style="margin-right:400px;">Render Settings:</p>
-			<!--<label for="TText">Transparency:</label>
-			<input type="text" id="TText" name="TText" />
-			<div id="Tslider"></div>-->
+			<div class="btn-group btn-group-toggle" data-toggle="buttons">
+				<label class="btn btn-secondary active">
+					<input type="radio" name="options" id="option1" autocomplete="off" checked> Phong
+				</label>
+				<label class="btn btn-secondary">
+					<input type="radio" name="options" id="option2" autocomplete="off"> Basic
+				</label>
+				<label class="btn btn-secondary">
+					<input type="radio" name="options" id="option3" autocomplete="off"> Lambert
+				</label>
+			</div>
 			<label for="TText">Transparency:  </label>
 			<form class="range-field">
 				<input id="TText" class="no-border" type="range" value="50" min="0" max="100" />
@@ -42,7 +50,10 @@
 			<form class="range-field">
 				<input id="LText" class="no-border" type="range" value="0" min="-10" max="10" />
 			</form>
-			<div id= 'console' >test2</div>
+			<div class="spinner-border" role="status">
+				<span class="sr-only">Loading...</span>
+			</div>
+			<div id= 'console' >test3</div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");

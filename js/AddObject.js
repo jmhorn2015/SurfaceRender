@@ -10,7 +10,7 @@ function AddObject(name2){
 				child.material.opacity = .5;
 				child.rotation.set(-90,0,0);
         	}
-			else if (child instanceof Three.Material ){
+			else if (child.isMaterial ){
 				var temp = object;
 				console.log(name2);
 				//object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
