@@ -51,9 +51,9 @@
 				<input id="LText" class="no-border" type="range" value="0" min="-10" max="10" />
 			</form>
 			<div role="status" id = "loading">
-				<span class="sr-only">Loading...</span>"
+				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test4</div>
+			<div id= 'console' >test5</div>
 		</div>
 		<script>
 			$("#loading").addClass('spinner-border');
@@ -78,15 +78,15 @@
 			
 			//Material
 			var PMesh = $("#option1");
-			PMesh.on("input change", function(e) {
+			PMesh.on("click", function(e) {
 				Material(0);
 			})
 			var BMesh = $("#option2");
-			BMesh.on("input change", function(e) {
+			BMesh.on("click", function(e) {
 				Material(1);
 			})
 			var LMesh = $("#option3");
-			LMesh.on("input change", function(e) {
+			LMesh.on("click", function(e) {
 				Material(2);
 			})
 			//Transparency
