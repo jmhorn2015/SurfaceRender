@@ -39,13 +39,13 @@ function Material(num){
 				var oldMat = child.material;
             	switch(num){
 					case 0:
-						child.material = new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
+						child.material = new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } );
 						break;
 					case 1:
-						child.material = new THREE.MeshBasicMaterial( { color: 0xffffff, dithering: true } ));
+						child.material = new THREE.MeshBasicMaterial( { color: 0xffffff, dithering: true } );
 						break;
 					case 2:
-						child.material = new THREE.MeshLambertMaterial( { color: 0xffffff, dithering: true } ));
+						child.material = new THREE.MeshLambertMaterial( { color: 0xffffff, dithering: true } );
 						break;
 				}
 				child.material.side = THREE.BackSide;
