@@ -39,7 +39,7 @@ scene.add( plane );
 var light = new THREE.AmbientLight(0x777777);
 scene.add(light);
 var light2 = new THREE.PointLight(0xffffff);
-light2.position.set(0,-10,0)
+light2.position.set(0,-10,1)
 scene.add(light2);
 
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
@@ -58,7 +58,7 @@ var axesHelper = new THREE.AxesHelper( 5 );
 scene2.add( axesHelper );
 
 //box
-var geometry = new THREE.BoxGeometry( 12.8, 3.2, 6.4);
+var geometry = new THREE.BoxGeometry( 5, 5, 5);
 var edge = new THREE.EdgesGeometry( geometry );
 var mat = new THREE.LineBasicMaterial( { color: 0x000000, linewidth: 2 } );
 var wireframe = new THREE.LineSegments( edge, mat );

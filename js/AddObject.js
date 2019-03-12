@@ -11,13 +11,15 @@ function AddObject(name2){
         	}
 			else{
 				var temp = object;
+				if ( child instanceof THREE.LineSegments ) {
+					console.log("found");
+				}
 				//object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
 			}
     	} );
 		object.name = "surface";
 		scene.add( object );
 		loading = false;
-		console.log("end");
 		},
 	function ( xhr ) {
 		loading = true;
