@@ -8,16 +8,11 @@ function AddObject(name2){
             	child.material.color.setHex(0x808080);
 				child.material.transparent = true;
 				child.material.opacity = .5;
-        	}
-			else if ( child instanceof THREE.Geometry ) {
-				console.log("found geo");
-        	}
-			else if ( child instanceof THREE.BufferGeometry ) {
-				console.log("found buff geo");
+				console.log(child.material.type)
         	}
 			else{
 				var temp = object;
-				console.log(name2);
+				console.log(temp.type);
 				//object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
 			}
     	} );
@@ -30,5 +25,5 @@ function AddObject(name2){
 		alert( 'An error happened' );
 	}
 	);
-	$("#loading").removeClass('spinner-border');
+	//$("#loading").removeClass('spinner-border');
 };
