@@ -39,19 +39,19 @@ function Material(num){
 				var oldMat = child.material;
             	switch(num){
 					case 0:
-						child.material = new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } );
+						child.material = new THREE.MeshPhongMaterial( { color: 0x808080, dithering: true } );
 						break;
 					case 1:
-						child.material = new THREE.MeshBasicMaterial( { color: 0xffffff, dithering: true } );
+						child.material = new THREE.MeshBasicMaterial( { color: 0x808080, dithering: true } );
 						break;
 					case 2:
-						child.material = new THREE.MeshLambertMaterial( { color: 0xffffff, dithering: true } );
+						child.material = new THREE.MeshLambertMaterial( { color: 0x808080, dithering: true } );
 						break;
 				}
 				child.material.side = THREE.BackSide;
-            	//child.material.color = oldMat;
+            	child.material.color = new THREE.Color(oldMat.color);
 				child.material.transparent = true;
-				//child.material.opacity = oldMat.opacity;
+				child.material.opacity = oldMat.opacity;
         	}
     	});
 	}

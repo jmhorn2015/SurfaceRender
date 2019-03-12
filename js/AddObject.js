@@ -7,6 +7,7 @@ function AddObject(name2){
             	child.material.color.setHex(0x808080);
 				child.material.transparent = true;
 				child.material.opacity = .5;
+				child.castShadow = true;
         	}
 			else{
 				var temp = object;
