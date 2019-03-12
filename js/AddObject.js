@@ -8,13 +8,14 @@ function AddObject(name2){
             	child.material.color.setHex(0x808080);
 				child.material.transparent = true;
 				child.material.opacity = .5;
+				child.rotation.set(-90,0,0);
         	}
-			else{
+			else if (child instanceof Three.Material ){
 				var temp = object;
-				object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
+				console.log(name2);
+				//object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
 			}
     	} );
-		object.rotation.set(-90,0,0);
 		scene.add( object );},
 	function ( xhr ) {
 		
