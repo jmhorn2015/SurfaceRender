@@ -125,12 +125,28 @@
 				Light(num3);
 			})
 			//Texture
-			var Txture = $("#lam");
+			var Txture = $("#texture");
 			var txtBool = false;
-			Txture.on("click", function(e) {
+			Txture.change(function(e) {
 				txtBool = !txtBool;
 				console.log("Texture");
 				Texture(txtBool);
+			})
+			//Shadow
+			var Shad = $("#shadow");
+			var shadBool = false;
+			Shad.change(function(e) {
+				shadBool = !shadBool;
+				console.log("shadow");
+				Shadow(shadBool);
+			})
+			//Reflective
+			var Reflex = $("#reflect");
+			var reBool = false;
+			Reflex.change(function(e) {
+				reBool = !reBool;
+				console.log("Reflect");
+				Reflection(reBool);
 			})
 		</script>
 	</body>
