@@ -26,7 +26,7 @@
 		<script src="js/Settings.js"></script> 
 		<div id='data'></div>
 		<div id = 'UI'>
-			<p style="margin-right:400px;">Render Settings:</p>
+			<p>Render Settings:</p>
 			<label for="Material">Material Type:</label>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
 				<label class="btn btn-secondary active" id = "phong">
@@ -51,10 +51,28 @@
 			<form class="range-field">
 				<input id="LText" class="no-border" type="range" value="0" min="-10" max="10" />
 			</form>
+			<div class="form-check">
+				<label class="form-check-label" for="texture">
+					Load Textures:
+				</label>
+				<input class="form-check-input" type="checkbox" value="" id="texture">
+			</div>
+			<div class="form-check">
+				<label class="form-check-label" for="shadow">
+					Cast Shadows:
+				</label>
+				<input class="form-check-input" type="checkbox" value="" id="shadow">
+			</div>
+			<div class="form-check">
+				<label class="form-check-label" for="reflect">
+					Reflective:
+				</label>
+				<input class="form-check-input" type="checkbox" value="" id="reflect">
+			</div>
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test2</div>
+			<div id= 'console' >test3</div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");
@@ -105,6 +123,14 @@
 			Lslider.on("input change", function(e) {
 				num3 = $(this).val();
 				Light(num3);
+			})
+			//Texture
+			var Txture = $("#lam");
+			var txtBool = false;
+			Txture.on("click", function(e) {
+				txtBool = !txtBool;
+				console.log("Texture");
+				Texture(txtBool);
 			})
 		</script>
 	</body>

@@ -25,7 +25,6 @@ function Light(num){
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		if(object.isPointLight){
-			console.log("run");
 			object.position.set(num, -10 + Math.abs(num), 0);
 		}
 	}
@@ -57,7 +56,7 @@ function Material(num){
 	}
 	console.log(num);
 };
-function Texture(num){
+function Texture(bool){
 	var arr = scene.children;
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
