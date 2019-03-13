@@ -36,7 +36,7 @@ circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
 var geometryP = new THREE.PlaneGeometry(9,9);
 var materialP = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 materialP.transparent = true;
-materialP.opacity = 0;
+materialP.opacity = 1;
 var plane = new THREE.Mesh( geometryP, materialP );
 plane.position.set(0, 0, -1);
 plane.receiveShadow = true;
