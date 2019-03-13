@@ -33,8 +33,10 @@ circleShape.quadraticCurveTo( circleRadius, - circleRadius, 0, - circleRadius );
 circleShape.quadraticCurveTo( - circleRadius, - circleRadius, - circleRadius, 0 );
 circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
 
-var geometryP = new THREE.PlaneGeometry(15,15);
+var geometryP = new THREE.PlaneGeometry(9,9);
 var materialP = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
+materialP.transparent = true;
+materialP.opacity = 0;
 var plane = new THREE.Mesh( geometryP, materialP );
 plane.position.set(0, 0, -1);
 plane.receiveShadow = true;
@@ -63,10 +65,11 @@ var axesHelper = new THREE.AxesHelper( 5 );
 scene2.add( axesHelper );
 
 //box
-var geometry = new THREE.BoxGeometry( 5, 5, 5);
+var geometry = new THREE.BoxGeometry( 10, 5, 10);
 var edge = new THREE.EdgesGeometry( geometry );
 var mat = new THREE.LineBasicMaterial( { color: 0x000000, linewidth: 2 } );
 var wireframe = new THREE.LineSegments( edge, mat );
+wireframe.name = "plane";
 scene.add( wireframe );
 
 camera.position.set( 0, 0, 2);

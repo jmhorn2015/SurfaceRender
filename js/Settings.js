@@ -80,6 +80,14 @@ function Shadow(bool){
 					child.castShadow = false;
 				}
         	}
+			else if( child instanceof THREE.Mesh & object.name == "plane"){
+				if(bool){
+					child.material.opacity = 1;
+				}
+				else{
+					child.material.opacity = 0;
+				}
+			}
     	});
 	}
 };
