@@ -73,7 +73,12 @@ function Shadow(bool){
 		var object = arr[x];
 		object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh & object.name == "surface") {
-				
+				if(bool){
+					child.castShadow = true;
+				}
+				else{
+					child.castShadow = false;
+				}
         	}
     	});
 	}
