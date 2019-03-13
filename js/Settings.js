@@ -25,7 +25,7 @@ function Light(num){
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		if(object.isPointLight){
-			object.position.set(num, -10 + Math.abs(num), 0);
+			object.position.set(num, -10 + Math.abs(num), 10);
 		}
 	}
 };

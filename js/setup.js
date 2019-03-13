@@ -33,7 +33,7 @@ circleShape.quadraticCurveTo( circleRadius, - circleRadius, 0, - circleRadius );
 circleShape.quadraticCurveTo( - circleRadius, - circleRadius, - circleRadius, 0 );
 circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
 
-var geometryP = new THREE.PlaneGeometry(4,4);
+var geometryP = new THREE.PlaneGeometry(15,15);
 var materialP = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 var plane = new THREE.Mesh( geometryP, materialP );
 plane.position.set(0, 0, -1);
