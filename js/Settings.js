@@ -110,6 +110,7 @@ function Reflection(bool){
 				else{
 					scene.background = null;
 					child.material.envMap = null;
+					scene.background = new THREE.Color('white');
 				}
         	}
     	});
