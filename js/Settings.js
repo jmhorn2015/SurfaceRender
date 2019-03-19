@@ -67,6 +67,7 @@ function Texture(bool){
 			object.traverse( function ( child ) {
 				if ( child instanceof THREE.Mesh & object.name == "surface") {
 					child.material.map = texture;
+					console.log("texture loaded");
 				}
 			});
 		}

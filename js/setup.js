@@ -48,8 +48,8 @@ scene.add(light);
 var light2 = new THREE.PointLight(0xffffff);
 light2.position.set(0,-10,10);
 light2.castShadow = true;
-light2.shadowMapWidth = 1024;
-light2.shadowMapHeight = 1024; 
+light2.shadowMapWidth = 2048;
+light2.shadowMapHeight = 2048; 
 scene.add(light2);
 
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
