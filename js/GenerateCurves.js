@@ -59,5 +59,6 @@ function GenerateCurves(name){
 				prevPos = a+1;
 			}
 		}
+		console.log("end Curve 1");
 	}
 };
