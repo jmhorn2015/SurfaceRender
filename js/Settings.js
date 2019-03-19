@@ -62,6 +62,8 @@ function Texture(bool){
 	loader.load(
 	'data/graniteTXT.jpg',
 	function ( texture ) {
+		texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+		texture.anisotropy = 16;
 		for( var x = 0; x < arr.length; x++){
 			var object = arr[x];
 			object.traverse( function ( child ) {
