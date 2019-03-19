@@ -63,6 +63,8 @@ function Texture(bool){
 	"data/graniteTXT.jpg",
 	function ( texture ) {
 		texture.format = THREE.RGBFormat;
+		texture.wrapS = THREE.RepeatWrapping;
+		texture.wrapT = THREE.RepeatWrapping;
 		for( var x = 0; x < arr.length; x++){
 			var object = arr[x];
 			object.traverse( function ( child ) {
