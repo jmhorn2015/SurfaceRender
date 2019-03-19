@@ -20,7 +20,6 @@ function GenerateCurves(name){
 		var y = 0;
 		var z = 0;
 		for(var a = 0; a < texts.length; a++){
-			console.log(texts[a]);
 			if(texts[a].charAt(texts[a].length-1)!=','){
 				counter++;
 				tempVal = Number(texts[a]);
@@ -59,6 +58,6 @@ function GenerateCurves(name){
 				prevPos = a+1;
 			}
 		}
-		console.log("end Curve 1");
+		console.log(texts.length);
 	}
 };
