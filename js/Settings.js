@@ -68,8 +68,10 @@ function Texture(bool){
 			var object = arr[x];
 			object.traverse( function ( child ) {
 				if ( child instanceof THREE.Mesh & object.name == "surface") {
-					child.material.map = texture;
-					console.log("texture loaded");
+					if(child.material.map == null)
+						child.material.map = texture;
+					else
+						child.material.map = null;
 				}
 			});
 		}
