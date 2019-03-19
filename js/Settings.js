@@ -60,7 +60,7 @@ function Texture(bool){
 	var arr = scene.children;
 	var loader = new THREE.TextureLoader();
 	loader.load(
-	'data/granite.jpg',
+	'data/graniteTXT.jpg',
 	function ( texture ) {
 		for( var x = 0; x < arr.length; x++){
 			var object = arr[x];
@@ -74,7 +74,7 @@ function Texture(bool){
 	,
 	undefined,
 	function ( err ) {
-		console.error( 'An error happened.' );
+		console.error( 'An error happened2.' );
 	}
 );
 
