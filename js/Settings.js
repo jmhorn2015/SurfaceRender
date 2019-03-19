@@ -51,6 +51,7 @@ function Material(num){
             	child.material.color = new THREE.Color(oldMat.color);
 				child.material.transparent = true;
 				child.material.opacity = oldMat.opacity;
+				child.material.map = oldMat.map;
         	}
     	});
 	}
@@ -62,6 +63,7 @@ function Texture(bool){
 	loader.load(
 	"data/graniteTXT.jpg",
 	function ( texture ) {
+		texture.repeat.set(.01,.01); 
 		texture.format = THREE.RGBFormat;
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
