@@ -64,7 +64,6 @@ function Texture(bool){
 	"data/graniteTXT.jpg",
 	function ( texture ) {
 		texture.repeat.set(.01,.01); 
-		texture.format = THREE.RGBFormat;
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
 		for( var x = 0; x < arr.length; x++){
