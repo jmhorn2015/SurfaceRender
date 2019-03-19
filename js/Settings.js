@@ -60,10 +60,9 @@ function Texture(bool){
 	var arr = scene.children;
 	var loader = new THREE.TextureLoader();
 	loader.load(
-	'data/graniteTXT.jpg',
+	"data/graniteTXT.jpg",
 	function ( texture ) {
-		texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-		texture.anisotropy = 16;
+		texture.format = THREE.RGBFormat;
 		for( var x = 0; x < arr.length; x++){
 			var object = arr[x];
 			object.traverse( function ( child ) {
