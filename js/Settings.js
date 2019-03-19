@@ -74,7 +74,7 @@ function Texture(bool){
 	,
 	undefined,
 	function ( err ) {
-		console.error( 'An error happened2.' );
+		console.error( 'An error happened.' );
 	}
 );
 
