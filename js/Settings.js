@@ -71,6 +71,7 @@ function Texture(bool){
 						child.material.map = texture;
 					else
 						child.material.map = null;
+					child.material.needsUpdate = true;
 				}
 			});
 		}
