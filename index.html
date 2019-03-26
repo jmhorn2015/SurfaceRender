@@ -75,12 +75,12 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' ></div>
+			<div id= 'console' >test</div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");
 			GenerateCurves("data/seeding_curve_2.txt");
-			var one = new SRSurface("data/surface1_1.obj", scene);
+			let one = new SRSurface("data/surface1_1.obj", scene);
 			AddObject("data/surface1_2.obj");
 			AddObject("data/surface2_1.obj");
 			AddObject("data/surface2_2.obj");

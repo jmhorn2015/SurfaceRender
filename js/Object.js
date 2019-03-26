@@ -6,7 +6,7 @@ class SRObject{
 		object.castShadow = false;
 		object.receiveShadow = false;
 		scene.add( plane );
-		materialP.opacity = 0;
+		object.opacity = 0;
 	}
 	static var allObjects[];
 	Position(x,y,z){
