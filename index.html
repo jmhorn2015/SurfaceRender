@@ -26,6 +26,7 @@
 		<script src="js/GenerateCurves.js"></script>
 		<script src="js/AddObject.js"></script>
 		<script src="js/Settings.js"></script> 
+		<script src="js/Object.js"></script> 
 		<div id='data'></div>
 		<div id = 'UI'>
 			<p>Render Settings:</p>
@@ -74,13 +75,12 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test</div>
+			<div id= 'console' ></div>
 		</div>
 		<script>
 			GenerateCurves("data/seeding_curve_1.txt");
 			GenerateCurves("data/seeding_curve_2.txt");
-			AddObject("data/outerbox.obj");
-			AddObject("data/surface1_1.obj");
+			var one = new SRSurface("data/surface1_1.obj", scene);
 			AddObject("data/surface1_2.obj");
 			AddObject("data/surface2_1.obj");
 			AddObject("data/surface2_2.obj");

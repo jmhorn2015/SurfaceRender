@@ -34,24 +34,6 @@ circleShape.quadraticCurveTo( circleRadius, - circleRadius, 0, - circleRadius );
 circleShape.quadraticCurveTo( - circleRadius, - circleRadius, - circleRadius, 0 );
 circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
 
-var geometryP = new THREE.PlaneGeometry(9,9);
-var materialP = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
-materialP.transparent = true;
-var plane = new THREE.Mesh( geometryP, materialP );
-plane.position.set(0, 0, -1);
-plane.receiveShadow = true;
-scene.add( plane );
-materialP.opacity = 0;
-
-var light = new THREE.AmbientLight(0x777777);
-scene.add(light);
-var light2 = new THREE.PointLight(0xffffff);
-light2.position.set(0,-10,10);
-light2.castShadow = true;
-light2.shadowMapWidth = 2048;
-light2.shadowMapHeight = 2048; 
-scene.add(light2);
-
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
 controls.enableKeys = false;
 
