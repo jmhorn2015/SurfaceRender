@@ -2,11 +2,6 @@ class SRObject{
 	object;
 	constructor(scene){
 		object = new THREE.Object3D();
-		object.position.set(0, 0, 0);
-		object.castShadow = false;
-		object.receiveShadow = false;
-		scene.add( plane );
-		object.opacity = 0;
 	}
 	allObjects;
 	Position(x,y,z){
@@ -32,13 +27,13 @@ class SRObject{
 }
 class SRlight extends SRObject{
 	constructor(scene){
+		super(scene);
 		object = new THREE.AmbientLight(0x777777);
 		object.position.set(0, 0, 0);
 		object.castShadow = false;
 		object.receiveShadow = false;
 		scene.add( plane );
 		object.opacity = 0;
-		scene.add(light);
 	}
 	Intensity(x){
 		object.intensity = x;
@@ -68,9 +63,10 @@ class SRlight extends SRObject{
 	}
 }
 class SRMesh extends SRObject{
-	var geo;
-	var mat;
+	geo;
+	mat;
 	constructor(scene, shape){
+		super(scene);
 		geo = new THREE.PlaneGeometry(9,9,32);
 		mat = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 		if(shape == "Sphere"){
@@ -196,7 +192,7 @@ class SRMesh extends SRObject{
 }
 class SRBoundingBox extends SRObject{
 	constructor(scene){
-		
+		super(scene);
 	}
 	Resize(){
 		
