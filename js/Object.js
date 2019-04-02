@@ -70,8 +70,16 @@ class SRlight extends SRObject{
 class SRMesh extends SRObject{
 	geo;
 	mat;
-	constructor(scene){
-		geo = new THREE.PlaneGeometry(9,9);
+	constructor(scene, shape){
+		if(shape == "Sphere"){
+			geo = new THREE.SphereGeometry(5,32,32);
+		}
+		else if(shape == "Box"){
+			geo = new THREE.BoxGeometry(5,5,5);
+		}
+		else{
+			geo = new THREE.PlaneGeometry(9,9);
+		}
 		mat= new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 		mat.transparent = true;
 		mat.opacity = 0;
@@ -80,15 +88,6 @@ class SRMesh extends SRObject{
 		plane.castShadow = false;
 		plane.receiveShadow = false;
 		scene.add( object );
-	}
-	constructor(shape,scene){
-		this(scene);
-		if(shape == "Sphere"){
-			geo = new THREE.SphereGeometry(5,32,32);
-		}
-		else if(shape == "Box"){
-			geo = new THREE.BoxGeometry(5,5,5);
-		}
 	}
 	add(newobject){
 		
