@@ -242,7 +242,6 @@ class SRSurface extends SRMesh{
 			alert( 'An error happened' );
 		}
 		);
-		}
 	}
 }
 class SRSeedingCurve extends SRMesh{
