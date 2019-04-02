@@ -8,7 +8,7 @@ class SRObject{
 		scene.add( plane );
 		object.opacity = 0;
 	}
-	static allObjects[];
+	allObjects;
 	Position(x,y,z){
 		object.position.set(x, y, z);
 	}
