@@ -115,10 +115,55 @@ class SRMesh extends SRObject{
     	});
 	}
 	Texture(onoff){
+		var loader = new THREE.TextureLoader();
+		loader.load(
+			"data/graniteTXT.jpg",
+			function ( texture ) {
+				texture.repeat.set(.01,.01); 
+				texture.wrapS = THREE.RepeatWrapping;
+				texture.wrapT = THREE.RepeatWrapping;
+				object.traverse( function ( child ) {
+					if ( child instanceof THREE.Mesh & object.name == "surface") {
+						if(child.material.map == null)
+							child.material.map = texture;
+						else
+							child.material.map = null;
+						child.material.needsUpdate = true;
+					}
+				});
+			},
+			undefined,
+			function ( err ) {
+				console.error( 'An error happened.' );
+			}
+		);
 		
 	}
 	Refletive(onoff){
-		
+		var arr = scene.children;
+		var path = "data/skybox/";
+		var urls = [
+			path + "px.jpg", path + "nx.jpg",
+			path + "py.jpg", path + "ny.jpg",
+			path + "pz.jpg", path + "nz.jpg"
+		];
+		textureCube = new THREE.CubeTextureLoader().load( urls );
+		textureCube.format = THREE.RGBFormat;
+		object.traverse( function ( child ) {
+			if ( child instanceof THREE.Mesh & object.name == "surface") {
+				if(bool){
+					scene.background = textureCube;
+					child.material.envMap = textureCube;
+					child.material.needsUpdate = true;
+				}
+				else{
+					scene.background = null;
+					child.material.envMap = null;
+					child.material.needsUpdate = true;
+					scene.background = new THREE.Color('white');
+				}
+			}
+		});
 	}
 	Transparency(x){
 		
