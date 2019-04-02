@@ -211,7 +211,8 @@ class SRSurface extends SRMesh{
 	constructor(filename, scene){
 		super(scene);
 		var loader = new THREE.OBJLoader();
-		loader.load(filename, function ( this.object ) {
+		loader.load(filename, function ( newobject ) {
+			this.object = newobject;
 			this.object.traverse( function ( child ) {
 				if ( child instanceof THREE.Mesh ) {
 					child.material.side = THREE.BackSide;
