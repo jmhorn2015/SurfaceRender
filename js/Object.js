@@ -212,14 +212,15 @@ class SRSurface extends SRMesh{
 		super(scene);
 		var loader = new THREE.OBJLoader();
 		loader.load(filename, function ( newobject ) {
-			this.object = newobject;
-			this.object.traverse( function ( child ) {
+			newobject.traverse( function ( child ) {
 				if ( child instanceof THREE.Mesh ) {
-					child.material.side = THREE.BackSide;
-					child.material.color.setHex(0x808080);
-					child.material.transparent = true;
-					child.material.opacity = .5;
-					child.recieveShadow = true;
+					this.object = child;
+					this.object.material.side = THREE.BackSide;
+					this.object.material.color.setHex(0x808080);
+					this.object.material.transparent = true;
+					this.object.material.opacity = .5;
+					this.object.recieveShadow = true;
+					break;
 				}
 			} );
 			scene.add( this.object );
