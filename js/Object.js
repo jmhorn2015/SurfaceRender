@@ -271,9 +271,9 @@ class SRSeedingCurve extends SRMesh{
 						bevelEnabled: false,
 						extrudePath: draw
 					};
-					var geo = new THREE.ExtrudeBufferGeometry( circleShape, extrudeSettings );
-					var mat = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff , wireframe: false } );
-					var mesh = new THREE.Mesh( geo, mat );
+					geo = new THREE.ExtrudeBufferGeometry( circleShape, extrudeSettings );
+					mat = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff , wireframe: false } );
+					object = new THREE.Mesh( geo, mat );
 					mesh.name = "mesh";
 					scene.add( mesh );
 					lineData = [];
