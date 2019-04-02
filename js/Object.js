@@ -68,10 +68,9 @@ class SRlight extends SRObject{
 	}
 }
 class SRMesh extends SRObject{
-	geo;
-	mat;
+	geo = new THREE.PlaneGeometry(9,9);
+	mat = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );;
 	constructor(scene, shape){
-		console.log(geo);
 		if(shape == "Sphere"){
 			geo = new THREE.SphereGeometry(5,32,32);
 			console.log(geo);
@@ -81,10 +80,8 @@ class SRMesh extends SRObject{
 			console.log(geo);
 		}
 		else{
-			geo = new THREE.PlaneGeometry(9,9);
 			console.log(geo);
 		}
-		mat= new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 		mat.transparent = true;
 		mat.opacity = 0;
 		object = new THREE.Mesh( geo, mat);
