@@ -229,7 +229,7 @@ class SRSurface extends SRMesh{
 			} );
 			tempOBJ.object = new THREE.Mesh( tempOBJ.geo, tempOBJ.mat);
 			tempOBJ.object.name = "sucess";
-			scene.add( tempOBJ.object );
+			Reassign(tempOBJ.object);
 			loading = false;
 			},
 		function ( xhr ) {
@@ -240,8 +240,9 @@ class SRSurface extends SRMesh{
 		}
 		);
 	}
-	Print(){
-		console.log(this.object.name);
+	Reassign(newobject){
+		this.object = newobject;
+		scene.add( this.object );
 	}
 }
 class SRSeedingCurve extends SRMesh{
