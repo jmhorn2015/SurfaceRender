@@ -1,3 +1,5 @@
+var check = false;
+
 class SRObject{
 	object;
 	constructor(scene){
@@ -212,7 +214,8 @@ class SRSurface extends SRMesh{
 		super(scene);
 		var loader = new THREE.OBJLoader();
 		var tempgeo, tempmat;
-		var check = false;
+		var tempOBJ = this.object;
+		check = false;
 		loader.load(filename, function ( newobject ) {
 			newobject.traverse( function ( child ) {
 				if ( child instanceof THREE.Mesh ) {
@@ -225,22 +228,20 @@ class SRSurface extends SRMesh{
 					tempmat = child.material;
 				}
 			} );
-			check = true;
+			this.object = new THREE.Mesh( tempgeo, tempmat);
+			scene.add( this.object );
+			loading = false;
 			},
 		function ( xhr ) {
 			loading = true;
+			if(xhr.loaded / xhr.total == 1){
+				console.log("object made");
+			}
 		},
 		function ( error ) {
 			alert( 'An error happened' );
 		}
 		);
-		while( true ){
-			if(check){
-				this.object = new THREE.Mesh( tempgeo, tempmat);
-				scene.add( this.object );
-				loading = false;
-				break;
-			}
 		}
 	}
 }
