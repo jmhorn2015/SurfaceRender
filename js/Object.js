@@ -71,14 +71,18 @@ class SRMesh extends SRObject{
 	geo;
 	mat;
 	constructor(scene, shape){
+		console.log(geo);
 		if(shape == "Sphere"){
 			geo = new THREE.SphereGeometry(5,32,32);
+			console.log(geo);
 		}
 		else if(shape == "Box"){
 			geo = new THREE.BoxGeometry(5,5,5);
+			console.log(geo);
 		}
 		else{
-			//geo = new THREE.PlaneGeometry(9,9);
+			geo = new THREE.PlaneGeometry(9,9);
+			console.log(geo);
 		}
 		mat= new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 		mat.transparent = true;
