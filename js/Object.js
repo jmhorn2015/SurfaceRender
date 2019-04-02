@@ -228,6 +228,7 @@ class SRSurface extends SRMesh{
 				}
 			} );
 			tempOBJ.object = new THREE.Mesh( tempOBJ.geo, tempOBJ.mat);
+			tempOBJ.object.name = "sucess";
 			scene.add( tempOBJ.object );
 			loading = false;
 			},
@@ -238,6 +239,9 @@ class SRSurface extends SRMesh{
 			alert( 'An error happened' );
 		}
 		);
+	}
+	Print(){
+		console.log(this.object.name);
 	}
 }
 class SRSeedingCurve extends SRMesh{
