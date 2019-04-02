@@ -5,22 +5,22 @@ class SRObject{
 	}
 	allObjects;
 	Position(x,y,z){
-		object.position.set(x, y, z);
+		this.object.position.set(x, y, z);
 	}
 	Rotate(x,y,z){
-		object.rotation.set(x,y,z);
+		this.object.rotation.set(x,y,z);
 	}
 	Shadow(onoff){
-		object.recieveShadow = onoff;
+		this.object.recieveShadow = onoff;
 	}
 	get Position(){
-		return object.position;
+		return this.object.position;
 	}
 	get Rotation(){
-		return object.rotation;
+		return this.object.rotation;
 	}
 	get Shadow(){
-		return object.recieveShadow;
+		return this.object.recieveShadow;
 	}
 	LoadSettings(){
 	}
@@ -28,30 +28,39 @@ class SRObject{
 class SRlight extends SRObject{
 	constructor(scene){
 		super(scene);
-		object = new THREE.AmbientLight(0x777777);
-		object.position.set(0, 0, 0);
-		object.castShadow = false;
-		object.receiveShadow = false;
-		scene.add( plane );
-		object.opacity = 0;
+		this.object = new THREE.AmbientLight(0x777777);
+		this.object.position.set(0, 0, 0);
+		this.object.castShadow = false;
+		this.object.receiveShadow = false;
+		scene.add( this.object );
+		this.object.opacity = 0;
 	}
 	Intensity(x){
-		object.intensity = x;
+		this.object.intensity = x;
 	}
 	Type(x){
-		var temp = object;
+		var temp = this.object;
 		if(x = "Point"){
-			object = new Three.PointLight
+			this.object = new Three.PointLight(0xffffff);
 		}
+		else{
+			this.object = new THREE.AmbientLight(0x777777);
+		}
+		this.object.position = temp.position;
+		this.object.castShadow = temp.castShadow;
+		this.object.receiveShadow = temp.recieveShadow;
+		scene.add( this.object );
+		this.object.opacity = temp.opacity;
+		
 	}
 	Color(hue){
-		object.color.setHex(hue.toString(16));
+		this.object.color.setHex(hue.toString(16));
 	}
 	get Intensity(){
-		return object.intensity;
+		return this.object.intensity;
 	}
 	get Type(){
-		if (object.isAmbientLight){
+		if (this.object.isAmbientLight){
 			return "Ambient";
 		}
 		else{
@@ -59,7 +68,7 @@ class SRlight extends SRObject{
 		}
 	}
 	get Color(){
-		return object.color.getHex();
+		return this.object.color.getHex();
 	}
 }
 class SRMesh extends SRObject{
@@ -70,33 +79,33 @@ class SRMesh extends SRObject{
 		this.geo = new THREE.PlaneGeometry(9,9,32);
 		this.mat = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 		if(shape == "Sphere"){
-			geo = new THREE.SphereGeometry(5,32,32);
-			console.log(geo);
+			this.geo = new THREE.SphereGeometry(5,32,32);
+			console.log(this.geo);
 		}
 		else if(shape == "Box"){
-			geo = new THREE.BoxGeometry(5,5,5);
-			console.log(geo);
+			this.geo = new THREE.BoxGeometry(5,5,5);
+			console.log(this.geo);
 		}
 		else{
 			console.log(this.geo);
 		}
-		mat.transparent = true;
-		mat.opacity = 0;
-		object = new THREE.Mesh( geo, mat);
-		plane.position.set(0, 0, -1);
-		plane.castShadow = false;
-		plane.receiveShadow = false;
-		scene.add( object );
+		this.mat.transparent = true;
+		this.mat.opacity = 0;
+		this.object = new THREE.Mesh( geo, mat);
+		this.object.position.set(0, 0, -1);
+		this.object.castShadow = false;
+		this.object.receiveShadow = false;
+		scene.add( this.object );
 	}
 	add(newobject){
 		
 	}
 	Color(hue){
-		object.color.setHex(hue.toString(16));
+		this.object.color.setHex(hue.toString(16));
 	}
 	Material(x){
-		object.traverse( function ( child ) {
-        	if ( child instanceof THREE.Mesh & object.name == "surface") {
+		this.object.traverse( function ( child ) {
+        	if ( child instanceof THREE.Mesh) {
 				var oldMat = child.material;
             	switch(x){
 					case 0:
@@ -125,7 +134,7 @@ class SRMesh extends SRObject{
 				texture.repeat.set(.01,.01); 
 				texture.wrapS = THREE.RepeatWrapping;
 				texture.wrapT = THREE.RepeatWrapping;
-				object.traverse( function ( child ) {
+				this.object.traverse( function ( child ) {
 				if(child.material.map == null)
 					child.material.map = texture;
 				else
@@ -149,7 +158,7 @@ class SRMesh extends SRObject{
 		];
 		var textureCube = new THREE.CubeTextureLoader().load( urls );
 		textureCube.format = THREE.RGBFormat;
-		object.traverse( function ( child ) {
+		this.object.traverse( function ( child ) {
 			if(bool){
 				scene.background = textureCube;
 				child.material.envMap = textureCube;
@@ -164,7 +173,7 @@ class SRMesh extends SRObject{
 		});
 	}
 	Transparency(x){
-		object.traverse( function ( child ) {
+		this.object.traverse( function ( child ) {
 			child.material.opacity = num;
     	});
 	}
@@ -202,8 +211,8 @@ class SRSurface extends SRMesh{
 	constructor(filename, scene){
 		super(scene);
 		var loader = new THREE.OBJLoader();
-		loader.load(filename, function ( object ) {
-			object.traverse( function ( child ) {
+		loader.load(filename, function ( this.object ) {
+			this.object.traverse( function ( child ) {
 				if ( child instanceof THREE.Mesh ) {
 					child.material.side = THREE.BackSide;
 					child.material.color.setHex(0x808080);
@@ -212,8 +221,7 @@ class SRSurface extends SRMesh{
 					child.recieveShadow = true;
 				}
 			} );
-			object.name = "surface";
-			scene.add( object );
+			scene.add( this.object );
 			loading = false;
 			},
 		function ( xhr ) {
@@ -269,11 +277,10 @@ class SRSeedingCurve extends SRMesh{
 						bevelEnabled: false,
 						extrudePath: draw
 					};
-					geo = new THREE.ExtrudeBufferGeometry( circleShape, extrudeSettings );
-					mat = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff , wireframe: false } );
-					object = new THREE.Mesh( geo, mat );
-					mesh.name = "mesh";
-					scene.add( mesh );
+					this.geo = new THREE.ExtrudeBufferGeometry( circleShape, extrudeSettings );
+					this.mat = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff , wireframe: false } );
+					this.object = new THREE.Mesh( this.geo, this.mat );
+					scene.add( this.object );
 					lineData = [];
 					counter = 0;
 					prevPos = a+1;
