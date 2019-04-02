@@ -1,5 +1,5 @@
 class SRObject{
-	var object;
+	object;
 	constructor(scene){
 		object = new THREE.Object3D();
 		object.position.set(0, 0, 0);
@@ -8,7 +8,7 @@ class SRObject{
 		scene.add( plane );
 		object.opacity = 0;
 	}
-	static var allObjects[];
+	allObjects[];
 	Position(x,y,z){
 		object.position.set(x, y, z);
 	}
@@ -33,6 +33,11 @@ class SRObject{
 class SRlight extends SRObject{
 	constructor(scene){
 		object = new THREE.AmbientLight(0x777777);
+		object.position.set(0, 0, 0);
+		object.castShadow = false;
+		object.receiveShadow = false;
+		scene.add( plane );
+		object.opacity = 0;
 		scene.add(light);
 	}
 	Intensity(x){
@@ -63,8 +68,8 @@ class SRlight extends SRObject{
 	}
 }
 class SRMesh extends SRObject{
-	var geo;
-	var mat;
+	geo;
+	mat;
 	constructor(scene){
 		geo = new THREE.PlaneGeometry(9,9);
 		mat= new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
@@ -138,14 +143,13 @@ class SRMesh extends SRObject{
 		
 	}
 	Refletive(onoff){
-		var arr = scene.children;
 		var path = "data/skybox/";
 		var urls = [
 			path + "px.jpg", path + "nx.jpg",
 			path + "py.jpg", path + "ny.jpg",
 			path + "pz.jpg", path + "nz.jpg"
 		];
-		textureCube = new THREE.CubeTextureLoader().load( urls );
+		var textureCube = new THREE.CubeTextureLoader().load( urls );
 		textureCube.format = THREE.RGBFormat;
 		object.traverse( function ( child ) {
 			if(bool){
@@ -198,6 +202,7 @@ class SRBoundingBox extends SRObject{
 }
 class SRSurface extends SRMesh{
 	constructor(filename, scene){
+		super(scene);
 		var loader = new THREE.OBJLoader();
 		loader.load(filename, function ( object ) {
 			object.traverse( function ( child ) {
@@ -223,9 +228,10 @@ class SRSurface extends SRMesh{
 	}
 }
 class SRSeedingCurve extends SRMesh{
-	var extrudeSettings;
-	var bigData = [];
+	extrudeSettings;
+	bigData = [];
 	constructor(filename, scene){
+		super(scene);
 		$.get(name,	function(data) {
 			var texts = data.split(" ");
 			var lineData = [];
