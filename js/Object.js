@@ -213,7 +213,6 @@ class SRSurface extends SRMesh{
 	constructor(filename, scene){
 		super(scene);
 		var loader = new THREE.OBJLoader();
-		var tempgeo, tempmat;
 		var tempOBJ = this;
 		check = false;
 		loader.load(filename, function ( newobject ) {
@@ -224,20 +223,16 @@ class SRSurface extends SRMesh{
 					child.material.transparent = true;
 					child.material.opacity = .5;
 					child.recieveShadow = true;
-					tempgeo = child.geometry;
-					tempmat = child.material;
+					tempOBJ.geo = child.geometry;
+					tempOBJ.mat = child.material;
 				}
 			} );
-			tempOBJ.object = new THREE.Mesh( tempgeo, tempmat);
-			scene.add( tempOBJ );
+			tempOBJ.object = new THREE.Mesh( tempOBJ.geo, tempOBJ.mat);
+			scene.add( tempOBJ.object );
 			loading = false;
 			},
 		function ( xhr ) {
 			loading = true;
-			if(xhr.loaded / xhr.total == 1){
-				console.log("object made");
-				tempOBJ.object;
-			}
 		},
 		function ( error ) {
 			alert( 'An error happened' );
