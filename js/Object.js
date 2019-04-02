@@ -78,7 +78,7 @@ class SRMesh extends SRObject{
 			geo = new THREE.BoxGeometry(5,5,5);
 		}
 		else{
-			geo = new THREE.PlaneGeometry(9,9);
+			//geo = new THREE.PlaneGeometry(9,9);
 		}
 		mat= new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 		mat.transparent = true;
