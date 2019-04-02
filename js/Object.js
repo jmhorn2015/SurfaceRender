@@ -78,7 +78,7 @@ class SRMesh extends SRObject{
 			console.log(geo);
 		}
 		else{
-			console.log(geo);
+			console.log(this.geo);
 		}
 		mat.transparent = true;
 		mat.opacity = 0;
