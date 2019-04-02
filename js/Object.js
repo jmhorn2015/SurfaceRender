@@ -1,7 +1,5 @@
 class SRObject{
 	object;
-	geo;
-	mat;
 	constructor(scene){
 		object = new THREE.Object3D();
 		object.position.set(0, 0, 0);
@@ -70,6 +68,8 @@ class SRlight extends SRObject{
 	}
 }
 class SRMesh extends SRObject{
+	var geo;
+	var mat;
 	constructor(scene, shape){
 		geo = new THREE.PlaneGeometry(9,9,32);
 		mat = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
