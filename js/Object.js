@@ -220,7 +220,6 @@ class SRSurface extends SRMesh{
 					this.object.material.transparent = true;
 					this.object.material.opacity = .5;
 					this.object.recieveShadow = true;
-					break;
 				}
 			} );
 			scene.add( this.object );
