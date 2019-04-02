@@ -67,8 +67,8 @@ class SRMesh extends SRObject{
 	mat;
 	constructor(scene, shape){
 		super(scene);
-		geo = new THREE.PlaneGeometry(9,9,32);
-		mat = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
+		this.geo = new THREE.PlaneGeometry(9,9,32);
+		this.mat = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 		if(shape == "Sphere"){
 			geo = new THREE.SphereGeometry(5,32,32);
 			console.log(geo);
