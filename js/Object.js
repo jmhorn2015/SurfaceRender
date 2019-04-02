@@ -228,8 +228,8 @@ class SRSurface extends SRMesh{
 					tempmat = child.material;
 				}
 			} );
-			this.object = new THREE.Mesh( tempgeo, tempmat);
-			scene.add( this.object );
+			tempOBJ = new THREE.Mesh( tempgeo, tempmat);
+			scene.add( tempOBJ );
 			loading = false;
 			},
 		function ( xhr ) {
