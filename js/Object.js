@@ -219,8 +219,8 @@ class SRSurface extends SRMesh{
 					child.material.transparent = true;
 					child.material.opacity = .5;
 					child.recieveShadow = true;
-					geo = child.geo;
-					mat = child.mat;
+					this.geo = child.geometry;
+					this.mat = child.material;
 				}
 			} );
 			this.object = new THREE.Mesh( this.geo, this.mat);
