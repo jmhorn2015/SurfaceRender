@@ -214,7 +214,7 @@ class SRSurface extends SRMesh{
 		super(scene);
 		var loader = new THREE.OBJLoader();
 		var tempgeo, tempmat;
-		var tempOBJ = this.object;
+		var tempOBJ = this;
 		check = false;
 		loader.load(filename, function ( newobject ) {
 			newobject.traverse( function ( child ) {
@@ -228,7 +228,7 @@ class SRSurface extends SRMesh{
 					tempmat = child.material;
 				}
 			} );
-			tempOBJ = new THREE.Mesh( tempgeo, tempmat);
+			tempOBJ.object = new THREE.Mesh( tempgeo, tempmat);
 			scene.add( tempOBJ );
 			loading = false;
 			},
@@ -236,6 +236,7 @@ class SRSurface extends SRMesh{
 			loading = true;
 			if(xhr.loaded / xhr.total == 1){
 				console.log("object made");
+				tempOBJ.object;
 			}
 		},
 		function ( error ) {
