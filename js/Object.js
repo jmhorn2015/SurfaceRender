@@ -123,13 +123,11 @@ class SRMesh extends SRObject{
 				texture.wrapS = THREE.RepeatWrapping;
 				texture.wrapT = THREE.RepeatWrapping;
 				object.traverse( function ( child ) {
-					if ( child instanceof THREE.Mesh & object.name == "surface") {
-						if(child.material.map == null)
-							child.material.map = texture;
-						else
-							child.material.map = null;
-						child.material.needsUpdate = true;
-					}
+				if(child.material.map == null)
+					child.material.map = texture;
+				else
+					child.material.map = null;
+				child.material.needsUpdate = true;
 				});
 			},
 			undefined,
@@ -150,18 +148,16 @@ class SRMesh extends SRObject{
 		textureCube = new THREE.CubeTextureLoader().load( urls );
 		textureCube.format = THREE.RGBFormat;
 		object.traverse( function ( child ) {
-			if ( child instanceof THREE.Mesh & object.name == "surface") {
-				if(bool){
-					scene.background = textureCube;
-					child.material.envMap = textureCube;
-					child.material.needsUpdate = true;
-				}
-				else{
-					scene.background = null;
-					child.material.envMap = null;
-					child.material.needsUpdate = true;
-					scene.background = new THREE.Color('white');
-				}
+			if(bool){
+				scene.background = textureCube;
+				child.material.envMap = textureCube;
+				child.material.needsUpdate = true;
+			}
+			else{
+				scene.background = null;
+				child.material.envMap = null;
+				child.material.needsUpdate = true;
+				scene.background = new THREE.Color('white');
 			}
 		});
 	}
