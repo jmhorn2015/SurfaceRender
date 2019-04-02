@@ -1,5 +1,5 @@
 class SRObject{
-	var object = new THREE.Object3D();
+	var object;
 	constructor(scene){
 		object = new THREE.Object3D();
 		object.position.set(0, 0, 0);
@@ -162,7 +162,9 @@ class SRMesh extends SRObject{
 		});
 	}
 	Transparency(x){
-		
+		object.traverse( function ( child ) {
+			child.material.opacity = num;
+    	});
 	}
 	Wireframe(onoff){
 		
