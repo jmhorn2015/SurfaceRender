@@ -211,6 +211,8 @@ class SRSurface extends SRMesh{
 	constructor(filename, scene){
 		super(scene);
 		var loader = new THREE.OBJLoader();
+		var tempgeo, tempmat;
+		var check = false;
 		loader.load(filename, function ( newobject ) {
 			newobject.traverse( function ( child ) {
 				if ( child instanceof THREE.Mesh ) {
@@ -219,13 +221,11 @@ class SRSurface extends SRMesh{
 					child.material.transparent = true;
 					child.material.opacity = .5;
 					child.recieveShadow = true;
-					this.geo = child.geometry;
-					this.mat = child.material;
+					tempgeo = child.geometry;
+					tempmat = child.material;
 				}
 			} );
-			this.object = new THREE.Mesh( this.geo, this.mat);
-			scene.add( this.object );
-			loading = false;
+			check = true;
 			},
 		function ( xhr ) {
 			loading = true;
@@ -234,6 +234,14 @@ class SRSurface extends SRMesh{
 			alert( 'An error happened' );
 		}
 		);
+		while( true ){
+			if(check){
+				this.object = new THREE.Mesh( tempgeo, tempmat);
+				scene.add( this.object );
+				loading = false;
+				break;
+			}
+		}
 	}
 }
 class SRSeedingCurve extends SRMesh{
