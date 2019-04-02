@@ -1,7 +1,7 @@
 class SRObject{
 	object;
 	constructor(scene){
-		object = new THREE.Object3D();
+		this.object = new THREE.Object3D();
 	}
 	allObjects;
 	Position(x,y,z){
