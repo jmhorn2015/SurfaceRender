@@ -82,14 +82,9 @@ class SRMesh extends SRObject{
 		this.mat = new THREE.MeshPhongMaterial( { color: 0x888888, dithering: true } );
 		if(shape == "Sphere"){
 			this.geo = new THREE.SphereGeometry(5,32,32);
-			console.log(this.geo);
 		}
 		else if(shape == "Box"){
 			this.geo = new THREE.BoxGeometry(5,5,5);
-			console.log(this.geo);
-		}
-		else{
-			console.log(this.geo);
 		}
 		this.mat.transparent = true;
 		this.mat.opacity = 0;
@@ -229,6 +224,7 @@ class SRSurface extends SRMesh{
 				} );
 				tempOBJ.name = filename;
 				resolve(tempOBJ);
+				console.log(tempOBJ);
 				loading = false;
 			},
 			function ( xhr ) {
@@ -241,6 +237,7 @@ class SRSurface extends SRMesh{
 		}
 		);
 		this.object = loaderCheck.then(function(response){
+			console.log(response);
 			var obj = response;
 			obj.mat.transparent = true;
 			obj.mat.opacity = 0;
