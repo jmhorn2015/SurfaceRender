@@ -242,12 +242,11 @@ class SRSurface extends SRMesh{
 			obj.position.set(0, 0, 0);
 			obj.castShadow = false;
 			obj.receiveShadow = false;
+			scene.add( obj );
 			return obj;
 		}, function(err) {
                 console.log(err);
 		});
-		scene.add( this.object );
-		console.log(this.object);
 	}
 }
 class SRSeedingCurve extends SRMesh{
