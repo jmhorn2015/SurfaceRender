@@ -210,12 +210,6 @@ class SRBoundingBox extends SRObject{
 	}
 }
 class SRSurface extends SRMesh{
-	constructor(filename, scene){
-		super(scene);
-		var loader = new THREE.OBJLoader();
-		var tempOBJ = new THREE.Mesh();
-		RunLoad().then(AssignOBJ(tempOBJ));
-	}
 	async RunLoad(){
 		loader.load(filename, function ( newobject ) {
 			newobject.traverse( function ( child ) {
@@ -249,6 +243,12 @@ class SRSurface extends SRMesh{
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
 		scene.add(this.object);
+	}
+	constructor(filename, scene){
+		super(scene);
+		var loader = new THREE.OBJLoader();
+		var tempOBJ = new THREE.Mesh();
+		RunLoad().then(AssignOBJ(tempOBJ));
 	}
 }
 class SRSeedingCurve extends SRMesh{
