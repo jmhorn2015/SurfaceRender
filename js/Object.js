@@ -207,7 +207,6 @@ class SRBoundingBox extends SRObject{
 class SRSurface extends SRMesh{
 	constructor(filename, scene){
 		super(scene);
-		
 		var loaderCheck = new Promise(function(resolve,reject){
 			var loader = new THREE.OBJLoader();
 			var tempOBJ;
@@ -224,7 +223,7 @@ class SRSurface extends SRMesh{
 				} );
 				tempOBJ.name = filename;
 				resolve(tempOBJ);
-				console.log(tempOBJ);
+				console.log(tempOBJ.geometry);
 				loading = false;
 			},
 			function ( xhr ) {
@@ -237,8 +236,9 @@ class SRSurface extends SRMesh{
 		}
 		);
 		this.object = loaderCheck.then(function(response){
-			console.log(response);
+			console.log(response.geometry);
 			var obj = response;
+			console.log(obj.geometry);
 			obj.mat.transparent = true;
 			obj.mat.opacity = 0;
 			obj.position.set(0, 0, 0);
