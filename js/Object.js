@@ -169,7 +169,7 @@ class SRMesh extends SRObject{
 			}
 		});
 	}
-	Transparency(x){
+	this.Transparency = function(x){
 		this.object.traverse( function ( child ) {
 			child.material.opacity = num;
     	});
