@@ -210,8 +210,15 @@ class SRBoundingBox extends SRObject{
 	}
 }
 class SRSurface extends SRMesh{
-	async RunLoad(){
-		loader.load(filename, function ( newobject ) {
+	AssignOBJ(temp){
+		
+	}
+	constructor(filename, scene){
+		super(scene);
+		var tempOBJ = new THREE.Mesh();
+		const loadfunct = async function(){
+			var loader = new THREE.OBJLoader();
+			loader.load(filename, function ( newobject ) {
 			newobject.traverse( function ( child ) {
 				if ( child instanceof THREE.Mesh ) {
 					child.material.side = THREE.BackSide;
@@ -233,8 +240,8 @@ class SRSurface extends SRMesh{
 			alert( 'An error happened' );
 		}
 		);
-	}
-	AssignOBJ(temp){
+		const value = await 'loading';
+		this.object = tempOBJ;
 		this.object = temp;
 		this.mat.transparent = true;
 		this.mat.opacity = 0;
@@ -243,12 +250,9 @@ class SRSurface extends SRMesh{
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
 		scene.add(this.object);
+		return value;
 	}
-	constructor(filename, scene){
-		super(scene);
-		var loader = new THREE.OBJLoader();
-		var tempOBJ = new THREE.Mesh();
-		RunLoad().then(AssignOBJ(tempOBJ));
+		loadfunct();
 	}
 }
 class SRSeedingCurve extends SRMesh{
