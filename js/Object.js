@@ -210,7 +210,6 @@ class SRSurface extends SRMesh{
 		var loaderCheck = new Promise(function(resolve,reject){
 			var loader = new THREE.OBJLoader();
 			var tempOBJ;
-			console.log(tempOBJ.geometry);
 			loader.load(filename, function ( object ) {
 				object.traverse( function ( child ) {
 					if ( child instanceof THREE.Mesh ) {
