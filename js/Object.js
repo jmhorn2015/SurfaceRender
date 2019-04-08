@@ -222,6 +222,8 @@ class SRSurface extends SRMesh{
 					}
 				} );
 				tempOBJ.name = filename;
+				scene.add(tempOBJ);
+				scene.add(object);
 				resolve(tempOBJ);
 				loading = false;
 			},
