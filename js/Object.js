@@ -222,8 +222,6 @@ class SRSurface extends SRMesh{
 					}
 				} );
 				tempOBJ.name = filename;
-				scene.add(tempOBJ);
-				//scene.add(object);
 				resolve(tempOBJ);
 				loading = false;
 			},
@@ -238,6 +236,7 @@ class SRSurface extends SRMesh{
 		);
 		scene.add(this.object = loaderCheck.then(function(response){
 			var obj = response;
+			scene.add(response);
 			console.log(obj.geometry);
 			obj.material.transparent = true;
 			obj.material.opacity = 0.5;
