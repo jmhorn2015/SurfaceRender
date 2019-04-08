@@ -215,8 +215,8 @@ class SRSurface extends SRMesh{
 	}
 	constructor(filename, scene){
 		super(scene);
-		var tempOBJ = new THREE.Mesh();
-		const loadfunct = async function(temp){
+		const loadfunct = async function(){
+			var tempOBJ = new THREE.Mesh();
 			var loader = new THREE.OBJLoader();
 			loader.load(filename, function ( newobject ) {
 			newobject.traverse( function ( child ) {
@@ -226,11 +226,11 @@ class SRSurface extends SRMesh{
 					child.material.transparent = true;
 					child.material.opacity = .5;
 					child.recieveShadow = true;
-					temp.geo = child.geometry;
-					temp.mat = child.material;
+					tempOBJ.geo = child.geometry;
+					tempOBJ.mat = child.material;
 				}
 			} );
-			temp.name = "sucess";
+			tempOBJ.name = "sucess";
 			console.log("found");
 			loading = false;
 			},
@@ -241,10 +241,10 @@ class SRSurface extends SRMesh{
 			alert( 'An error happened' );
 		}
 		);
-		const value = await 'loading';
+		const value = await tempOBJ;
 		return value;
 	}
-		loadfunct(tempOBJ);
+		this.object = loadfunct(tempOBJ);
 		console.log(tempOBJ.name);
 		this.object = tempOBJ;
 		this.mat.transparent = true;
