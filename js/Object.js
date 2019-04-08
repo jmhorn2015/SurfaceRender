@@ -173,7 +173,7 @@ class SRMesh extends SRObject{
 		this.object.traverse( function ( child ) {
 			child.material.opacity = num;
     	});
-	}
+	};
 	Wireframe(onoff){
 		
 	}
