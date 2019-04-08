@@ -230,10 +230,12 @@ class SRSurface extends SRMesh{
 					temp.mat = child.material;
 				}
 			} );
-			temp.object.name = "sucess";
+			temp.name = "sucess";
+			console.log("found);
 			loading = false;
 			},
 		function ( xhr ) {
+			console.log(xhr);
 			loading = true;
 		},
 		function ( error ) {
