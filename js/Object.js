@@ -241,18 +241,14 @@ class SRSurface extends SRMesh{
 			alert( 'An error happened' );
 		}
 		);
-		const value = await tempOBJ;
-		return value;
-	};
-	const writefunct = async function(obj){
-		obj = await loadfunct();
+		const obj = await tempOBJ;
 		console.log(obj.name);
-		obj = tempOBJ;
 		obj.mat.transparent = true;
 		obj.mat.opacity = 0;
-		object.position.set(0, 0, -1);
-		object.castShadow = false;
-		object.receiveShadow = false;
+		obj.position.set(0, 0, -1);
+		obj.castShadow = false;
+		obj.receiveShadow = false;
+		return obj;
 	};
 	this.object = writefunct(this.object);
 	scene.add(this.object);
