@@ -231,7 +231,7 @@ class SRSurface extends SRMesh{
 				}
 			} );
 			temp.name = "sucess";
-			console.log("found);
+			console.log("found");
 			loading = false;
 			},
 		function ( xhr ) {
