@@ -235,7 +235,6 @@ class SRSurface extends SRMesh{
 			loading = false;
 			},
 		function ( xhr ) {
-			console.log(xhr);
 			loading = true;
 		},
 		function ( error ) {
@@ -246,6 +245,7 @@ class SRSurface extends SRMesh{
 		return value;
 	}
 		loadfunct(tempOBJ);
+		console.log(tempOBJ.name);
 		this.object = tempOBJ;
 		this.mat.transparent = true;
 		this.mat.opacity = 0;
