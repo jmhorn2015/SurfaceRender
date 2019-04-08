@@ -247,7 +247,7 @@ class SRSurface extends SRMesh{
 			this.object.castShadow = false;
 			this.object.receiveShadow = false;
 			scene.add( this.object );
-		}
+		});
 }
 class SRSeedingCurve extends SRMesh{
 	extrudeSettings;
