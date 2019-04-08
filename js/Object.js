@@ -212,6 +212,7 @@ class SRBoundingBox extends SRObject{
 class SRSurface extends SRMesh{
 	constructor(filename, scene){
 		super(scene);
+		
 		var loaderCheck = new Promise(function(resolve,reject){
 			var loader = new THREE.OBJLoader();
 			var tempOBJ;
@@ -239,17 +240,18 @@ class SRSurface extends SRMesh{
 			);
 		}
 		);
-		loaderCheck.then(function(response){
-			this.object = response;
-			this.object.mat.transparent = true;
-			this.object.mat.opacity = 0;
-			this.object.position.set(0, 0, 0);
-			this.object.castShadow = false;
-			this.object.receiveShadow = false;
-			scene.add( this.object );
+		this.object = loaderCheck.then(function(response){
+			var obj = response;
+			obj.mat.transparent = true;
+			obj.mat.opacity = 0;
+			obj.position.set(0, 0, 0);
+			obj.castShadow = false;
+			obj.receiveShadow = false;
+			return obj;
 		}, function(err) {
                 console.log(err);
 		});
+		scene.add( this.object );
 	}
 }
 class SRSeedingCurve extends SRMesh{
