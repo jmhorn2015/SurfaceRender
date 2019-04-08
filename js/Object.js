@@ -210,6 +210,7 @@ class SRSurface extends SRMesh{
 		var loaderCheck = new Promise(function(resolve,reject){
 			var loader = new THREE.OBJLoader();
 			var tempOBJ;
+			console.log(tempOBJ.geometry);
 			loader.load(filename, function ( object ) {
 				object.traverse( function ( child ) {
 					if ( child instanceof THREE.Mesh ) {
@@ -239,8 +240,8 @@ class SRSurface extends SRMesh{
 			console.log(response.geometry);
 			var obj = response;
 			console.log(obj.geometry);
-			obj.mat.transparent = true;
-			obj.mat.opacity = 0;
+			obj.material.transparent = true;
+			obj.material.opacity = 0;
 			obj.position.set(0, 0, 0);
 			obj.castShadow = false;
 			obj.receiveShadow = false;
