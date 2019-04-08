@@ -250,7 +250,7 @@ class SRSurface extends SRMesh{
 		obj.receiveShadow = false;
 		return obj;
 	};
-	this.object = writefunct(this.object);
+	this.object = loadfunct(this.object);
 	scene.add(this.object);
 	}
 }
