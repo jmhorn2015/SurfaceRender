@@ -237,7 +237,7 @@ class SRSurface extends SRMesh{
 			}
 			);
 		}
-		};
+		);
 		loaderCheck.then(function(response){
 			super(scene);
 			this.object = response;
