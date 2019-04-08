@@ -209,7 +209,6 @@ class SRSurface extends SRMesh{
 		super(scene);
 		var loaderCheck = new Promise(function(resolve,reject){
 			var loader = new THREE.OBJLoader();
-			var tempOBJ;
 			loader.load(filename, function ( object ) {
 				object.traverse( function ( child ) {
 					if ( child instanceof THREE.Mesh ) {
@@ -218,11 +217,10 @@ class SRSurface extends SRMesh{
 						child.material.transparent = true;
 						child.material.opacity = .5;
 						child.recieveShadow = true;
-						tempOBJ = child;
 					}
 				} );
-				tempOBJ.name = filename;
-				resolve(tempOBJ);
+				object.name = filename;
+				resolve(object);
 				loading = false;
 			},
 			function ( xhr ) {
