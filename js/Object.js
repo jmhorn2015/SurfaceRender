@@ -223,7 +223,6 @@ class SRSurface extends SRMesh{
 				} );
 				tempOBJ.name = filename;
 				resolve(tempOBJ);
-				console.log(tempOBJ.geometry);
 				loading = false;
 			},
 			function ( xhr ) {
@@ -236,7 +235,6 @@ class SRSurface extends SRMesh{
 		}
 		);
 		this.object = loaderCheck.then(function(response){
-			console.log(response.geometry);
 			var obj = response;
 			console.log(obj.geometry);
 			obj.material.transparent = true;
@@ -249,6 +247,7 @@ class SRSurface extends SRMesh{
                 console.log(err);
 		});
 		scene.add( this.object );
+		console.log(this.object);
 	}
 }
 class SRSeedingCurve extends SRMesh{
