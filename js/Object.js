@@ -234,19 +234,19 @@ class SRSurface extends SRMesh{
 			);
 		}
 		);
-		scene.add(this.object = loaderCheck.then(function(response){
+		this.object = loaderCheck.then(function(response){
 			var obj = response;
-			scene.add(response);
 			console.log(obj.geometry);
 			obj.material.transparent = true;
 			obj.material.opacity = 0.5;
 			obj.position.set(0, 0, 0);
 			obj.castShadow = false;
 			obj.receiveShadow = false;
+			scene.add(obj);
 			return obj;
 		}, function(err) {
                 console.log(err);
-		}));
+		});
 	}
 }
 class SRSeedingCurve extends SRMesh{
