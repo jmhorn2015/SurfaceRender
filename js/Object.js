@@ -238,6 +238,7 @@ class SRSurface extends SRMesh{
 			var obj = response;
 			console.log(obj.geometry);
 			obj.material.transparent = true;
+			obj.material.opacity = 0.5;
 			obj.position.set(0, 0, 0);
 			obj.castShadow = false;
 			obj.receiveShadow = false;
