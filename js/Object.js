@@ -244,19 +244,18 @@ class SRSurface extends SRMesh{
 		const value = await tempOBJ;
 		return value;
 	};
-	const writefunct = async function(){
-		this.object = await loadfunct();
-		console.log(tempOBJ.name);
-		this.object = tempOBJ;
-		this.mat.transparent = true;
-		this.mat.opacity = 0;
-		this.object = new THREE.Mesh( this.geo, this.mat);
-		this.object.position.set(0, 0, -1);
-		this.object.castShadow = false;
-		this.object.receiveShadow = false;
-		scene.add(this.object);
+	const writefunct = async function(obj){
+		obj = await loadfunct();
+		console.log(obj.name);
+		obj = tempOBJ;
+		obj.mat.transparent = true;
+		obj.mat.opacity = 0;
+		object.position.set(0, 0, -1);
+		object.castShadow = false;
+		object.receiveShadow = false;
 	};
-	writefunct();
+	this.object = writefunct(this.object);
+	scene.add(this.object);
 	}
 }
 class SRSeedingCurve extends SRMesh{
