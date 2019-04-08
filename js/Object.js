@@ -210,49 +210,44 @@ class SRBoundingBox extends SRObject{
 	}
 }
 class SRSurface extends SRMesh{
-	AssignOBJ(temp){
-		
-	}
 	constructor(filename, scene){
-		super(scene);
-		const loadfunct = async function(){
-			var tempOBJ = new THREE.Mesh();
+		var loaderCheck = new Promise(function(resolve,reject){
 			var loader = new THREE.OBJLoader();
-			loader.load(filename, function ( newobject ) {
-			newobject.traverse( function ( child ) {
-				if ( child instanceof THREE.Mesh ) {
-					child.material.side = THREE.BackSide;
-					child.material.color.setHex(0x808080);
-					child.material.transparent = true;
-					child.material.opacity = .5;
-					child.recieveShadow = true;
-					tempOBJ.geo = child.geometry;
-					tempOBJ.mat = child.material;
-				}
-			} );
-			tempOBJ.name = "sucess";
-			console.log("found");
-			loading = false;
+			var tempOBJ;
+			loader.load(name2, function ( object ) {
+				object.traverse( function ( child ) {
+					if ( child instanceof THREE.Mesh ) {
+						child.material.side = THREE.BackSide;
+						child.material.color.setHex(0x808080);
+						child.material.transparent = true;
+						child.material.opacity = .5;
+						child.recieveShadow = true;
+						tempOBJ = child;
+					}
+				} );
+				tempOBJ.name = filename;
+				resolve(tempOBJ);
+				loading = false;
 			},
-		function ( xhr ) {
-			loading = true;
-		},
-		function ( error ) {
-			alert( 'An error happened' );
+			function ( xhr ) {
+				loading = true;
+			},
+			function ( error ) {
+				alert( 'An error happened' );
+			}
+			);
 		}
-		);
-		const obj = await tempOBJ;
-		console.log(obj.name);
-		obj.mat.transparent = true;
-		obj.mat.opacity = 0;
-		obj.position.set(0, 0, -1);
-		obj.castShadow = false;
-		obj.receiveShadow = false;
-		return obj;
-	};
-	this.object = loadfunct(this.object);
-	scene.add(this.object);
-	}
+		};
+		loaderCheck.then(function(response){
+			super(scene);
+			this.object = response;
+			this.object.mat.transparent = true;
+			this.object.mat.opacity = 0;
+			this.object.position.set(0, 0, 0);
+			this.object.castShadow = false;
+			this.object.receiveShadow = false;
+			scene.add( this.object );
+		}
 }
 class SRSeedingCurve extends SRMesh{
 	extrudeSettings;
