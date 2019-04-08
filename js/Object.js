@@ -243,8 +243,9 @@ class SRSurface extends SRMesh{
 		);
 		const value = await tempOBJ;
 		return value;
-	}
-		this.object = loadfunct(tempOBJ);
+	};
+	const writefunct = async function(){
+		this.object = await loadfunct();
 		console.log(tempOBJ.name);
 		this.object = tempOBJ;
 		this.mat.transparent = true;
@@ -254,6 +255,8 @@ class SRSurface extends SRMesh{
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
 		scene.add(this.object);
+	};
+	writefunct();
 	}
 }
 class SRSeedingCurve extends SRMesh{
