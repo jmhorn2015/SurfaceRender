@@ -171,7 +171,7 @@ class SRMesh extends SRObject{
 	}
 	transparency(x){
 		//this.object.traverse( function ( child ) {
-			console.log("test");
+			console.log(this.object);
 		//	child.material.opacity = num;
     	//});
 		this.object.material.opacity = num;
