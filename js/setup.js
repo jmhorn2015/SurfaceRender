@@ -72,11 +72,14 @@ AddObject("data/surface2_2.obj", surf4);
 
 //raycaster
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
-dragControls.addEventListener( 'dragstart', function () {
+dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
+	startColor = event.object.material.color.getHex();
+	event.object.material.color.setHex(0x000000);
 } );
-dragControls.addEventListener( 'dragend', function () {
+dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
+	event.object.material.color.setHex(startColor);
 } );
 
 camera.position.set( 0, 0, 2);
