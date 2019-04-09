@@ -169,31 +169,30 @@ class SRMesh extends SRObject{
 			}
 		});
 	}
-	set Transparency(x){
+	transparency(x){
 		this.object.traverse( function ( child ) {
 			child.material.opacity = num;
     	});
-		return this;
 	}
 	Wireframe(onoff){
 		
 	}
-	get Color(){
+	getColor(){
 		
 	}
-	get Material(){
+	getMaterial(){
 		
 	}
-	get Texture(){
+	getTexture(){
 		
 	}
-	get Refletive(){
+	getRefletive(){
 		
 	}
-	get Transparency(){
+	getTransparency(){
 		
 	}
-	get Wireframe(){
+	getWireframe(){
 		
 	}
 }
