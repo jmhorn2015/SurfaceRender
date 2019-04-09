@@ -34,7 +34,8 @@ circleShape.quadraticCurveTo( circleRadius, - circleRadius, 0, - circleRadius );
 circleShape.quadraticCurveTo( - circleRadius, - circleRadius, - circleRadius, 0 );
 circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
 
-var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
+var controls = new THREE.TrackballControls( camera );
+//var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
 controls.enableKeys = false;
 
 //axis
