@@ -61,15 +61,16 @@ scene.add( wireframe );
 var mouse = new THREE.Vector2(), INTERSECTED;
 var raycast = new THREE.Raycaster();
 
-function onDocumentMouseMove( event ) {
-	event.preventDefault();
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-}
+function onMouseClick( event ) {
 
-function render() {
-	raycast.setFromCamera( mouse, camera );
-	var intersects = raycast.intersectObjects( scene.children );
+    // calculate mouse position in normalized device coordinates
+    // (-1 to +1) for both components
+    mouse.x = ( event.clientX / canvasWidth) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+    // update the picking ray with the camera and mouse position
+    raycast.setFromCamera( mouse, camera );
+	var intersects = raycaster.intersectObjects( scene.children );
 	if ( intersects.length > 0 ) {
 		if ( INTERSECTED != intersects[ 0 ].object ) {
 			if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
@@ -79,8 +80,8 @@ function render() {
 			}
 	} else {
 		if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-		INTERSECTED = null;
-	}
+			INTERSECTED = null;
+			}
 }
 
 camera.position.set( 0, 0, 2);
