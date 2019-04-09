@@ -101,7 +101,6 @@ var animate = function () {
 	camera2.position.setLength( 15 );
     camera2.lookAt( scene2.position );
 	stats.begin();
-	render();
 	renderer.render( scene, camera );
 	stats.end();
 	renderer2.render( scene2, camera2 );
