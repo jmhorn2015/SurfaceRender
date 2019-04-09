@@ -168,11 +168,7 @@ class SRMesh extends SRObject{
 		});
 	}
 	transparency(x){
-		//this.object.traverse( function ( child ) {
-			console.log(this.object);
-		//	child.material.opacity = num;
-    	//});
-		this.object.material.opacity = num;
+		this.mat.opacity = num;
 	}
 	Wireframe(onoff){
 		
@@ -214,7 +210,7 @@ class SRSurface extends SRMesh{
 		this.mat.transparent = true;
 		this.mat.opacity = 0.5;
 		this.object = new THREE.Mesh( this.geo, this.mat);
-		this.object.position.set(0, 0, -1);
+		this.object.position.set(0, 0, 0);
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
 		scene.add(this.object);
