@@ -214,8 +214,7 @@ class SRSurface extends SRMesh{
 		this.object.position.set(0, 0, -1);
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
-		console.log(this.object);
-		//scene.add(this.object);
+		scene.add(mesh);
 	};
 	
 }
