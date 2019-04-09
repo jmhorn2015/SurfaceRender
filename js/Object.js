@@ -236,19 +236,20 @@ class SRSurface extends SRMesh{
 			);
 		}
 		);
-		this.object = loaderCheck.then(function(response){
-			var obj = response;
-			console.log(obj.geometry);
-			obj.material.transparent = true;
-			obj.material.opacity = 0.5;
-			obj.position.set(0, 0, 0);
-			obj.castShadow = false;
-			obj.receiveShadow = false;
+		this.object = await loaderCheck();
+		//this.object = loaderCheck.then(function(response){
+		//	var obj = response;
+		//	console.log(obj.geometry);
+		//	obj.material.transparent = true;
+		//	obj.material.opacity = 0.5;
+		//	obj.position.set(0, 0, 0);
+		//	obj.castShadow = false;
+		//	obj.receiveShadow = false;
 			scene.add(obj);
-			return obj;
-		}, function(err) {
-                console.log(err);
-		});
+		//	return obj;
+		//}, function(err) {
+        //        console.log(err);
+		//});
 	}
 }
 class SRSeedingCurve extends SRMesh{
