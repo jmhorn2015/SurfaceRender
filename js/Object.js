@@ -1,5 +1,3 @@
-var check = false;
-
 class SRObject{
 	object;
 	constructor(scene){
@@ -209,48 +207,30 @@ class SRBoundingBox extends SRObject{
 class SRSurface extends SRMesh{
 	constructor(filename, scene){
 		super(scene);
-		var loaderCheck = new Promise(function(resolve,reject){
-			var loader = new THREE.OBJLoader();
-			var tempOBJ;
-			loader.load(filename, function ( object ) {
-				object.traverse( function ( child ) {
-					if ( child instanceof THREE.Mesh ) {
-						child.material.side = THREE.BackSide;
-						child.material.color.setHex(0x808080);
-						child.material.transparent = true;
-						child.material.opacity = .5;
-						child.recieveShadow = true;
-						tempOBJ = child;
-					}
-				} );
-				tempOBJ.name = filename;
-				resolve(tempOBJ);
-				loading = false;
-			},
-			function ( xhr ) {
-				loading = true;
-			},
-			function ( error ) {
-				alert( 'An error happened' );
-			}
-			);
+		var b = true;
+		var mesh;
+		while(b){
+			var arr = scene.children;
+			for( var x = 0; x < arr.length; x++){
+				mesh = arr[x];
+				if(mesh.name == filename){
+					scene.remove(filename);
+					b = false;
+					break
+				}
+			}	
 		}
-		);
-		this.object = await loaderCheck();
-		//this.object = loaderCheck.then(function(response){
-		//	var obj = response;
-		//	console.log(obj.geometry);
-		//	obj.material.transparent = true;
-		//	obj.material.opacity = 0.5;
-		//	obj.position.set(0, 0, 0);
-		//	obj.castShadow = false;
-		//	obj.receiveShadow = false;
-			scene.add(obj);
-		//	return obj;
-		//}, function(err) {
-        //        console.log(err);
-		//});
+		this.geo = mesh.geometry;
+		this.mat = mesh.material;
+		this.mat.transparent = true;
+		this.mat.opacity = 0;
+		this.object = new THREE.Mesh( this.geo, this.mat);
+		this.object.position.set(0, 0, -1);
+		this.object.castShadow = false;
+		this.object.receiveShadow = false;
+		scene.add(this.object);
 	}
+	
 }
 class SRSeedingCurve extends SRMesh{
 	extrudeSettings;
