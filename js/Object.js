@@ -4,13 +4,13 @@ class SRObject{
 		this.object = new THREE.Object3D();
 	}
 	allObjects;
-	Position(x,y,z){
+	position(x,y,z){
 		this.object.position.set(x, y, z);
 	}
-	Rotate(x,y,z){
+	rotate(x,y,z){
 		this.object.rotation.set(x,y,z);
 	}
-	Shadow(onoff){
+	shadow(onoff){
 		this.object.recieveShadow = onoff;
 	}
 	get Position(){
@@ -35,10 +35,10 @@ class SRlight extends SRObject{
 		scene.add( this.object );
 		this.object.opacity = 0;
 	}
-	Intensity(x){
+	intensity(x){
 		this.object.intensity = x;
 	}
-	Type(x){
+	type(x){
 		var temp = this.object;
 		if(x = "Point"){
 			this.object = new Three.PointLight(0xffffff);
@@ -53,13 +53,13 @@ class SRlight extends SRObject{
 		this.object.opacity = temp.opacity;
 		
 	}
-	Color(hue){
-		this.object.color.setHex(hue.toString(16));
+	color(hue){
+		this.object.color.setHSL(hue/100, 1, .5);
 	}
-	get Intensity(){
+	getIntensity(){
 		return this.object.intensity;
 	}
-	get Type(){
+	getType(){
 		if (this.object.isAmbientLight){
 			return "Ambient";
 		}
@@ -67,7 +67,7 @@ class SRlight extends SRObject{
 			return "Point";
 		}
 	}
-	get Color(){
+	getColor(){
 		return this.object.color.getHex();
 	}
 }
@@ -96,7 +96,7 @@ class SRMesh extends SRObject{
 		
 	}
 	color(hue){
-		this.object.color.setHex(hue.toString(16));
+		this.object.color.setHSL(hue/100, 1, .5);
 	}
 	material(x){
 		this.object.traverse( function ( child ) {
