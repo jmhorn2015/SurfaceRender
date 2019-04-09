@@ -1,22 +1,5 @@
 var loading = false;
 
-var objects = [];
-let surf1 = new SRSurface(scene);
-let surf2 = new SRSurface(scene);
-let surf3 = new SRSurface(scene);
-let surf4 = new SRSurface(scene);
-objects.push(surf1);
-objects.push(surf2);
-objects.push(surf3);
-objects.push(surf4);
-//let line1 = new SRSeedingCurve("data/seeding_curve_1.txt", scene);
-GenerateCurves("data/seeding_curve_2.txt");
-AddObject("data/surface1_1.obj", surf1);
-AddObject("data/surface1_2.obj", surf2);
-AddObject("data/surface2_1.obj", surf3);
-AddObject("data/surface2_2.obj", surf4);
-
-
 var three = $("<div id = 'three'></div>");
 $("body").append(three);
 $(three).innerHeight(window.innerHeight);
@@ -73,6 +56,23 @@ var mat = new THREE.LineBasicMaterial( { color: 0x000000, linewidth: 2 } );
 var wireframe = new THREE.LineSegments( edge, mat );
 wireframe.name = "plane";
 scene.add( wireframe );
+
+//objects
+var objects = [];
+let surf1 = new SRSurface(scene);
+let surf2 = new SRSurface(scene);
+let surf3 = new SRSurface(scene);
+let surf4 = new SRSurface(scene);
+objects.push(surf1);
+objects.push(surf2);
+objects.push(surf3);
+objects.push(surf4);
+//let line1 = new SRSeedingCurve("data/seeding_curve_1.txt", scene);
+GenerateCurves("data/seeding_curve_2.txt");
+AddObject("data/surface1_1.obj", surf1);
+AddObject("data/surface1_2.obj", surf2);
+AddObject("data/surface2_1.obj", surf3);
+AddObject("data/surface2_2.obj", surf4);
 
 //raycaster
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
