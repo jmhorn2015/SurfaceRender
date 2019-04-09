@@ -205,34 +205,17 @@ class SRBoundingBox extends SRObject{
 	}
 }
 class SRSurface extends SRMesh{
-	constructor(filename, scene){
+	constructor(scene){
 		super(scene);
-		var b = true;
-		var breaker = 100000;
-		var mesh;
-		while(b | breaker > 0){
-			console.log("b loop");
-			var arr = scene.children;
-			for( var x = 0; x < arr.length; x++){
-				mesh = arr[x];
-				if(mesh.name == filename){
-					scene.remove(filename);
-					b = false;
-					break;
-				}
-				breaker--;
-			}	
-		}
-		this.geo = mesh.geometry;
-		this.mat = mesh.material;
-		this.mat.transparent = true;
-		this.mat.opacity = 0;
+	}
+	updateMesh(mesh){
+		this.geo = mesh.geo;
 		this.object = new THREE.Mesh( this.geo, this.mat);
 		this.object.position.set(0, 0, -1);
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
 		scene.add(this.object);
-	}
+	};
 	
 }
 class SRSeedingCurve extends SRMesh{

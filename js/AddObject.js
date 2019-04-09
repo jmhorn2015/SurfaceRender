@@ -1,4 +1,4 @@
-function AddObject(name2){
+function AddObject(name2, surface){
 	var loader = new THREE.OBJLoader();
 	loader.load(name2, function ( object ) {
     	object.traverse( function ( child ) {
@@ -18,7 +18,7 @@ function AddObject(name2){
 			}
     	} );
 		object.name = name2;
-		scene.add( object );
+		surface.updateMesh(object);
 		loading = false;
 		},
 	function ( xhr ) {
