@@ -209,8 +209,8 @@ class SRSurface extends SRMesh{
 		super(scene);
 	}
 	updateMesh(mesh){
-		this.geo = mesh.geo;
-		this.mat = mesh.mat;
+		this.geo = mesh.geometry;
+		this.mat = mesh.material;
 		this.mat.transparent = true;
 		this.mat.opacity = 0.5;
 		this.object = new THREE.Mesh( this.geo, this.mat);
