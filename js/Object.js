@@ -90,7 +90,6 @@ class SRMesh extends SRObject{
 		this.object.position.set(0, 0, -1);
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
-		scene.add( this.object );
 	}
 	add(newobject){
 		
@@ -183,6 +182,7 @@ class SRMesh extends SRObject{
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
 		scene.add(this.object);
+		objects.push(this.object);
 	};
 	getColor(){
 		

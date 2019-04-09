@@ -35,7 +35,6 @@ circleShape.quadraticCurveTo( - circleRadius, - circleRadius, - circleRadius, 0 
 circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
 
 var controls = new THREE.TrackballControls( camera );
-//var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
 controls.enableKeys = false;
 
 //axis
@@ -64,10 +63,6 @@ let surf1 = new SRSurface(scene);
 let surf2 = new SRSurface(scene);
 let surf3 = new SRSurface(scene);
 let surf4 = new SRSurface(scene);
-objects.push(surf1.object);
-objects.push(surf2.object);
-objects.push(surf3.object);
-objects.push(surf4.object);
 //let line1 = new SRSeedingCurve("data/seeding_curve_1.txt", scene);
 GenerateCurves("data/seeding_curve_2.txt");
 AddObject("data/surface1_1.obj", surf1);
