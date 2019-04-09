@@ -34,7 +34,7 @@ circleShape.quadraticCurveTo( circleRadius, - circleRadius, 0, - circleRadius );
 circleShape.quadraticCurveTo( - circleRadius, - circleRadius, - circleRadius, 0 );
 circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
 
-var controls = new THREE.TrackballControls( camera );
+var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
 controls.enableKeys = false;
 
 //axis
@@ -75,7 +75,7 @@ var dragControls = new THREE.DragControls( objects, camera, renderer.domElement 
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
 	startColor = event.object.material.color.getHex();
-	event.object.material.color.setHex(0x000000);
+	event.object.material.color.setHex(0xFF0000);
 } );
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
