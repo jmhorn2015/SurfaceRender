@@ -168,11 +168,23 @@ class SRMesh extends SRObject{
 		});
 	}
 	transparency(x){
+		console.log(num);
 		this.mat.opacity = num;
 	}
 	Wireframe(onoff){
 		
 	}
+	updateMesh(mesh){
+		this.geo = mesh.geometry;
+		this.mat = mesh.material;
+		this.mat.transparent = true;
+		this.mat.opacity = 0.5;
+		this.object = new THREE.Mesh( this.geo, this.mat);
+		this.object.position.set(0, 0, 0);
+		this.object.castShadow = false;
+		this.object.receiveShadow = false;
+		scene.add(this.object);
+	};
 	getColor(){
 		
 	}
@@ -204,18 +216,6 @@ class SRSurface extends SRMesh{
 	constructor(scene){
 		super(scene);
 	}
-	updateMesh(mesh){
-		this.geo = mesh.geometry;
-		this.mat = mesh.material;
-		this.mat.transparent = true;
-		this.mat.opacity = 0.5;
-		this.object = new THREE.Mesh( this.geo, this.mat);
-		this.object.position.set(0, 0, 0);
-		this.object.castShadow = false;
-		this.object.receiveShadow = false;
-		scene.add(this.object);
-	};
-	
 }
 class SRSeedingCurve extends SRMesh{
 	extrudeSettings;
