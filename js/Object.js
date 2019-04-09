@@ -95,10 +95,10 @@ class SRMesh extends SRObject{
 	add(newobject){
 		
 	}
-	Color(hue){
+	color(hue){
 		this.object.color.setHex(hue.toString(16));
 	}
-	Material(x){
+	material(x){
 		this.object.traverse( function ( child ) {
         	if ( child instanceof THREE.Mesh) {
 				var oldMat = child.material;
@@ -121,7 +121,7 @@ class SRMesh extends SRObject{
         	}
     	});
 	}
-	Texture(onoff){
+	texture(onoff){
 		var loader = new THREE.TextureLoader();
 		loader.load(
 			"data/graniteTXT.jpg",
@@ -144,7 +144,7 @@ class SRMesh extends SRObject{
 		);
 		
 	}
-	Refletive(onoff){
+	refletive(onoff){
 		var path = "data/skybox/";
 		var urls = [
 			path + "px.jpg", path + "nx.jpg",
@@ -168,8 +168,7 @@ class SRMesh extends SRObject{
 		});
 	}
 	transparency(x){
-		console.log(num);
-		this.mat.opacity = num;
+		this.mat.opacity = num/100;
 	}
 	Wireframe(onoff){
 		
