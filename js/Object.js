@@ -210,6 +210,9 @@ class SRSurface extends SRMesh{
 	}
 	updateMesh(mesh){
 		this.geo = mesh.geo;
+		this.mat = mesh.mat;
+		this.mat.transparent = true;
+		this.mat.opacity = 0.5;
 		this.object = new THREE.Mesh( this.geo, this.mat);
 		this.object.position.set(0, 0, -1);
 		this.object.castShadow = false;
