@@ -17,17 +17,18 @@
 		<!--Three.js-->
 		<script src="js/three.js"></script>
 		<script src="js/TrackballControls.js"></script>
+		<script src="js/DragControls.js"></script>
 		<script src="js/stats.min.js"></script>
 		<script src="js/OBJLoader.js"></script>
 		<script src="js/CubeTextureLoader.js"></script>
 		<script src="js/TextureLoader.js"></script>
 		<script src="js/Object3D.js"></script> 
 		<!-- Main Scripts -->
+		<script src="js/Object.js"></script> 
 		<script src="js/setup.js"></script>
 		<script src="js/GenerateCurves.js"></script>
 		<script src="js/AddObject.js"></script>
 		<script src="js/Settings.js"></script> 
-		<script src="js/Object.js"></script> 
 		<div id='data'></div>
 		<div id = 'UI'>
 			<p>Render Settings:</p>
@@ -76,20 +77,9 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test2</div>
+			<div id= 'console' >test</div>
 		</div>
 		<script>
-			let surf1 = new SRSurface(scene);
-			let surf2 = new SRSurface(scene);
-			let surf3 = new SRSurface(scene);
-			let surf4 = new SRSurface(scene);
-			//let line1 = new SRSeedingCurve("data/seeding_curve_1.txt", scene);
-			GenerateCurves("data/seeding_curve_2.txt");
-			AddObject("data/surface1_1.obj", surf1);
-			AddObject("data/surface1_2.obj", surf2);
-			AddObject("data/surface2_1.obj", surf3);
-			AddObject("data/surface2_2.obj", surf4);
-			
 			//Transparency
 			var num = 50;
 			//Hue

@@ -1,5 +1,22 @@
 var loading = false;
 
+var objects = [];
+let surf1 = new SRSurface(scene);
+let surf2 = new SRSurface(scene);
+let surf3 = new SRSurface(scene);
+let surf4 = new SRSurface(scene);
+objects.push(surf1);
+objects.push(surf2);
+objects.push(surf3);
+objects.push(surf4);
+//let line1 = new SRSeedingCurve("data/seeding_curve_1.txt", scene);
+GenerateCurves("data/seeding_curve_2.txt");
+AddObject("data/surface1_1.obj", surf1);
+AddObject("data/surface1_2.obj", surf2);
+AddObject("data/surface2_1.obj", surf3);
+AddObject("data/surface2_2.obj", surf4);
+
+
 var three = $("<div id = 'three'></div>");
 $("body").append(three);
 $(three).innerHeight(window.innerHeight);
@@ -58,31 +75,13 @@ wireframe.name = "plane";
 scene.add( wireframe );
 
 //raycaster
-var mouse = new THREE.Vector2(), INTERSECTED;
-var raycast = new THREE.Raycaster();
-
-function onMouseClick( event ) {
-
-    // calculate mouse position in normalized device coordinates
-    // (-1 to +1) for both components
-    mouse.x = ( event.clientX / canvasWidth) * 2 - 1;
-    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-    // update the picking ray with the camera and mouse position
-    raycast.setFromCamera( mouse, camera );
-	var intersects = raycaster.intersectObjects( scene.children );
-	if ( intersects.length > 0 ) {
-		if ( INTERSECTED != intersects[ 0 ].object ) {
-			if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-				INTERSECTED = intersects[ 0 ].object;
-				INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-				INTERSECTED.material.emissive.setHex( 0xff0000 );
-			}
-	} else {
-		if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-			INTERSECTED = null;
-			}
-}
+var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
+dragControls.addEventListener( 'dragstart', function () {
+	controls.enabled = false;
+} );
+dragControls.addEventListener( 'dragend', function () {
+	controls.enabled = true;
+} );
 
 camera.position.set( 0, 0, 2);
 controls.update();
