@@ -18,6 +18,7 @@ function AddObject(name2, surface){
 			}
     	} );
 		object.name = name2;
+		console.log(object);
 		surface.updateMesh(object);
 		loading = false;
 		},
