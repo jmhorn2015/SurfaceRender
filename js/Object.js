@@ -208,16 +208,19 @@ class SRSurface extends SRMesh{
 	constructor(filename, scene){
 		super(scene);
 		var b = true;
+		var breaker = 100000;
 		var mesh;
-		while(b){
+		while(b | breaker > 0){
+			console.log("b loop");
 			var arr = scene.children;
 			for( var x = 0; x < arr.length; x++){
 				mesh = arr[x];
 				if(mesh.name == filename){
 					scene.remove(filename);
 					b = false;
-					break
+					break;
 				}
+				breaker--;
 			}	
 		}
 		this.geo = mesh.geometry;
