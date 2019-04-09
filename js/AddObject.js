@@ -8,6 +8,8 @@ function AddObject(name2, surface){
 				child.material.transparent = true;
 				child.material.opacity = .5;
 				child.recieveShadow = true;
+				child.name = name2;
+				surface.updateMesh(child);
         	}
 			else{
 				var temp = object;
@@ -17,8 +19,6 @@ function AddObject(name2, surface){
 				//object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
 			}
     	} );
-		object.name = name2;
-		surface.updateMesh(object);
 		loading = false;
 		},
 	function ( xhr ) {
