@@ -57,6 +57,32 @@ var wireframe = new THREE.LineSegments( edge, mat );
 wireframe.name = "plane";
 scene.add( wireframe );
 
+//raycaster
+var mouse = new THREE.Vector2(), INTERSECTED;
+var raycast = new THREE.Raycaster();
+
+function onDocumentMouseMove( event ) {
+	event.preventDefault();
+	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+}
+
+function render() {
+	raycaster.setFromCamera( mouse, camera );
+	var intersects = raycaster.intersectObjects( scene.children );
+	if ( intersects.length > 0 ) {
+		if ( INTERSECTED != intersects[ 0 ].object ) {
+			if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+				INTERSECTED = intersects[ 0 ].object;
+				INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+				INTERSECTED.material.emissive.setHex( 0xff0000 );
+			}
+	} else {
+		if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+		INTERSECTED = null;
+	}
+}
+
 camera.position.set( 0, 0, 2);
 controls.update();
 
@@ -74,6 +100,7 @@ var animate = function () {
 	camera2.position.setLength( 15 );
     camera2.lookAt( scene2.position );
 	stats.begin();
+	render();
 	renderer.render( scene, camera );
 	stats.end();
 	renderer2.render( scene2, camera2 );
