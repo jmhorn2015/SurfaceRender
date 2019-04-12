@@ -30,8 +30,6 @@ class SRLight extends SRObject{
 		super(scene);
 		this.object = new THREE.AmbientLight(0x777777);
 		this.object.position.set(0, 0, 0);
-		this.object.castShadow = true;
-		this.object.receiveShadow = false;
 		scene.add( this.object );
 		this.object.opacity = 0;
 	}
@@ -42,13 +40,12 @@ class SRLight extends SRObject{
 		var temp = this.object;
 		if(x = "Point"){
 			this.object = new THREE.PointLight(0xffffff);
+			this.object.castShadow = true;
 		}
 		else{
 			this.object = new THREE.AmbientLight(0x777777);
 		}
 		this.object.position.set(temp.position);
-		this.object.castShadow = temp.castShadow;
-		this.object.receiveShadow = temp.recieveShadow;
 		scene.add( this.object );
 		this.object.opacity = temp.opacity;
 		
@@ -174,7 +171,7 @@ class SRMesh extends SRObject{
 		this.mat.transparent = true;
 		this.mat.opacity = 0.5;
 		this.object = new THREE.Mesh( this.geo, this.mat);
-		this.object.position.set(0, -2, 0);
+		this.object.position.set(0, 0, 0);
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
 		scene.add(this.object);
