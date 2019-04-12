@@ -41,7 +41,7 @@ class SRLight extends SRObject{
 	type(x){
 		var temp = this.object;
 		if(x = "Point"){
-			this.object = new Three.PointLight(0xffffff);
+			this.object = new THREE.PointLight(0xffffff);
 		}
 		else{
 			this.object = new THREE.AmbientLight(0x777777);
