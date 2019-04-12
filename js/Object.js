@@ -95,7 +95,11 @@ class SRMesh extends SRObject{
 		
 	}
 	color(hue){
-		this.object.color.setHSL(hue/100, 1, .5);
+		this.object.traverse( function ( child ) {
+        	if ( child instanceof THREE.Mesh) {
+				this.mat.color.setHSL(hue/100, 1, .5);
+			}
+		}
 	}
 	material(x){
 		this.object.traverse( function ( child ) {
@@ -143,7 +147,7 @@ class SRMesh extends SRObject{
 		);
 		
 	}
-	refletive(onoff){
+	refletive(onoff, scene){
 		var path = "data/skybox/";
 		var urls = [
 			path + "px.jpg", path + "nx.jpg",

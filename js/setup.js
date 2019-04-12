@@ -74,12 +74,13 @@ AddObject("data/surface2_2.obj", surf4);
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
-	startColor = event.object.material.color.getHex();
-	event.object.material.color.setHex(0xFF0000);
+	startColor = event.mat.color.getHex();
+	console.log(event);
+	event.mat.color.setHex(0xFF0000);
 } );
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
-	event.object.material.color.setHex(startColor);
+	event.mat.color.setHex(startColor);
 } );
 
 camera.position.set( 0, 0, 2);
