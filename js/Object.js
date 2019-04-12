@@ -99,7 +99,7 @@ class SRMesh extends SRObject{
         	if ( child instanceof THREE.Mesh) {
 				this.mat.color.setHSL(hue/100, 1, .5);
 			}
-		}
+		});
 	}
 	material(x){
 		this.object.traverse( function ( child ) {
