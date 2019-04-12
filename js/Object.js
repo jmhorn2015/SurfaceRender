@@ -112,7 +112,9 @@ class SRMesh extends SRObject{
 		this.mat.transparent = true;
 		this.mat.opacity = oldMat.opacity;
 		this.mat.map = oldMat.map;
+		scene.remove(this.object.name);
 		this.object = new THREE.Mesh(this.geo, this.mat);
+		scene.add(this.object);
 	}
 	texture(onoff){
 		var loader = new THREE.TextureLoader();
@@ -172,6 +174,7 @@ class SRMesh extends SRObject{
 		this.mat.transparent = true;
 		this.mat.opacity = 0.5;
 		this.object = new THREE.Mesh( this.geo, this.mat);
+		this.object.name = mesh.name;
 		this.object.position.set(0, 0, 0);
 		this.object.castShadow = false;
 		this.object.receiveShadow = false;
