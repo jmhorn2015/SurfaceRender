@@ -19,6 +19,7 @@ function AddObject(name2, surface){
 				//object = new THREE.Mesh( temp, new THREE.MeshPhongMaterial( { color: 0xffffff, dithering: true } ));
 			}
     	} );
+		scene.add(object);
 		loading = false;
 		},
 	function ( xhr ) {
