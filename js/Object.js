@@ -92,7 +92,7 @@ class SRMesh extends SRObject{
 		
 	}
 	color(hue){
-		this.mat.color.setHSL(hue/100, 1, .5);
+		this.mat.color.setHSL(hue, 1, .5);
 	}
 	material(x){
 		var oldMat = this.mat;
@@ -147,7 +147,7 @@ class SRMesh extends SRObject{
 		var textureCube = new THREE.CubeTextureLoader().load( urls );
 		textureCube.format = THREE.RGBFormat;
 		this.object.traverse( function ( child ) {
-			if(bool){
+			if(onoff){
 				scene.background = textureCube;
 				child.material.envMap = textureCube;
 				child.material.needsUpdate = true;
