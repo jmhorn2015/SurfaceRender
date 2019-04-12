@@ -95,34 +95,26 @@ class SRMesh extends SRObject{
 		
 	}
 	color(hue){
-		this.object.traverse( function ( child ) {
-        	if ( child instanceof THREE.Mesh) {
-				this.mat.color.setHSL(hue/100, 1, .5);
-			}
-		});
+		this.mat.color.setHSL(hue/100, 1, .5);
 	}
 	material(x){
-		this.object.traverse( function ( child ) {
-        	if ( child instanceof THREE.Mesh) {
-				var oldMat = child.material;
-            	switch(x){
-					case 0:
-						child.material = new THREE.MeshPhongMaterial( { color: 0x808080, dithering: true } );
-						break;
-					case 1:
-						child.material = new THREE.MeshBasicMaterial( { color: 0x808080, dithering: true } );
-						break;
-					case 2:
-						child.material = new THREE.MeshLambertMaterial( { color: 0x808080, dithering: true } );
-						break;
-				}
-				child.material.side = THREE.BackSide;
-            	child.material.color = new THREE.Color(oldMat.color);
-				child.material.transparent = true;
-				child.material.opacity = oldMat.opacity;
-				child.material.map = oldMat.map;
-        	}
-    	});
+		var oldMat = this.mat;
+        switch(x){
+			case 0:
+				this.mat = new THREE.MeshPhongMaterial( { color: 0x808080, dithering: true } );
+				break;
+			case 1:
+				this.mat = new THREE.MeshBasicMaterial( { color: 0x808080, dithering: true } );
+				break;
+			case 2:
+				this.mat = new THREE.MeshLambertMaterial( { color: 0x808080, dithering: true } );
+				break;
+		}
+		this.mat.side = THREE.BackSide;
+        this.mat.color = new THREE.Color(oldMat.color);
+		this.mat.transparent = true;
+		this.mat.opacity = oldMat.opacity;
+		this.mat.map = oldMat.map;
 	}
 	texture(onoff){
 		var loader = new THREE.TextureLoader();
