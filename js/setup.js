@@ -78,6 +78,8 @@ AddObject("data/surface2_1.obj", surf3);
 AddObject("data/surface2_2.obj", surf4);
 
 //raycaster
+
+/*
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
@@ -86,6 +88,7 @@ dragControls.addEventListener( 'dragstart', function (event) {
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
 } );
+*/
 
 camera.position.set( 0, 0, 2);
 controls.update();
