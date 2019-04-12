@@ -25,7 +25,7 @@ class SRObject{
 	LoadSettings(){
 	}
 }
-class SRlight extends SRObject{
+class SRLight extends SRObject{
 	constructor(scene){
 		super(scene);
 		this.object = new THREE.AmbientLight(0x777777);
