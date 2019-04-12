@@ -112,6 +112,7 @@ class SRMesh extends SRObject{
 		this.mat.transparent = true;
 		this.mat.opacity = oldMat.opacity;
 		this.mat.map = oldMat.map;
+		this.object = new THREE.Mesh(this.geo, this.mat);
 	}
 	texture(onoff){
 		var loader = new THREE.TextureLoader();
@@ -136,7 +137,7 @@ class SRMesh extends SRObject{
 		);
 		
 	}
-	refletive(onoff, scene){
+	reflective(onoff, scene){
 		var path = "data/skybox/";
 		var urls = [
 			path + "px.jpg", path + "nx.jpg",
