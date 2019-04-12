@@ -30,7 +30,7 @@ class SRlight extends SRObject{
 		super(scene);
 		this.object = new THREE.AmbientLight(0x777777);
 		this.object.position.set(0, 0, 0);
-		this.object.castShadow = false;
+		this.object.castShadow = true;
 		this.object.receiveShadow = false;
 		scene.add( this.object );
 		this.object.opacity = 0;

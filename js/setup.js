@@ -57,6 +57,13 @@ var wireframe = new THREE.LineSegments( edge, mat );
 wireframe.name = "plane";
 scene.add( wireframe );
 
+//lights
+var light = new SRLight(scene);
+var light2 = new SRLight(scene);
+light2.type("Point");
+light2.position(0,-10,-10);
+light2.shadow(true);
+
 //objects
 var objects = [];
 let surf1 = new SRSurface(scene);
@@ -74,7 +81,7 @@ AddObject("data/surface2_2.obj", surf4);
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
-	console.log(event);
+	console.log(event.object.name);
 } );
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;

@@ -9,7 +9,6 @@ function AddObject(name2, surface){
 				child.material.opacity = .5;
 				child.recieveShadow = false;
 				child.name = name2;
-				scene.add(child);
 				surface.updateMesh(child);
         	}
 			else{
