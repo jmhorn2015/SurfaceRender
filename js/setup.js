@@ -57,7 +57,8 @@ light2.position(0,-10,-10);
 light2.shadow(true);
 
 //shadow plane
-let shadowPlane = new SRMesh(scene);
+var shadowPlane = new SRMesh(scene);
+shadowPlane.updateMesh(shadowPlane.object);
 
 //objects
 var objects = [];
