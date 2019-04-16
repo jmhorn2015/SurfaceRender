@@ -1,6 +1,16 @@
+//base shape
+var circleRadius = .01;
+var circleShape = new THREE.Shape();
+circleShape.moveTo( 0, circleRadius );
+circleShape.quadraticCurveTo( circleRadius, circleRadius, circleRadius, 0 );
+circleShape.quadraticCurveTo( circleRadius, - circleRadius, 0, - circleRadius );
+circleShape.quadraticCurveTo( - circleRadius, - circleRadius, - circleRadius, 0 );
+circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
+
 var extrudeSettings;
 var bigData = [];
 var texts;
+
 function GenerateCurves(name, mesh){
 	$.get(name,	function(data) {
 		 texts = data.split(" ");

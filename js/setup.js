@@ -26,14 +26,6 @@ renderer.gammaOutput = true;
 scene.background = new THREE.Color('white');
 container.appendChild( renderer.domElement );
 
-var circleRadius = .01;
-var circleShape = new THREE.Shape();
-circleShape.moveTo( 0, circleRadius );
-circleShape.quadraticCurveTo( circleRadius, circleRadius, circleRadius, 0 );
-circleShape.quadraticCurveTo( circleRadius, - circleRadius, 0, - circleRadius );
-circleShape.quadraticCurveTo( - circleRadius, - circleRadius, - circleRadius, 0 );
-circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
-
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
 controls.enableKeys = false;
 
@@ -86,7 +78,6 @@ AddObject("data/surface2_2.obj", surf4);
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
-	console.log(event.object.name);
 } );
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
