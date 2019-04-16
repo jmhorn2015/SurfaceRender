@@ -64,13 +64,16 @@ light2.type("Point");
 light2.position(0,-10,-10);
 light2.shadow(true);
 
+//shadow plane
+let shadowPlane = new SRMesh(scene);
+
 //objects
 var objects = [];
 let surf1 = new SRSurface(scene);
 let surf2 = new SRSurface(scene);
 let surf3 = new SRSurface(scene);
 let surf4 = new SRSurface(scene);
-//let line1 = new SRSeedingCurve("data/seeding_curve_1.txt", scene);
+let line1 = new SRSeedingCurve("data/seeding_curve_1.txt", scene);
 GenerateCurves("data/seeding_curve_2.txt");
 AddObject("data/surface1_1.obj", surf1);
 AddObject("data/surface1_2.obj", surf2);
