@@ -74,10 +74,11 @@
 					Reflective:
 				</label>
 			</div>
+			<button type="button" class="btn btn-primary btn-lg btn-block" id="reset">Reset Position</button>
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test</div>
+			<div id= 'console' >test2</div>
 		</div>
 		<script>
 			//Transparency
@@ -141,6 +142,11 @@
 			Reflex.change(function(e) {
 				reBool = !reBool;
 				surf1.reflective(reBool, scene);
+			})
+			//reset
+			var Reset = $("reset");
+			Reset.click(function(e) {
+				surf1.position(0,0,0);
 			})
 		</script>
 	</body>

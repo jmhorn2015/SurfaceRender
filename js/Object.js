@@ -10,7 +10,7 @@ class SRObject{
 		this.object.rotation.set(x,y,z);
 	}
 	shadow(onoff){
-		console.log("Shadow");
+		console.log(this.object.castShadow);
 		this.object.castShadow = onoff;
 	}
 	get Position(){
