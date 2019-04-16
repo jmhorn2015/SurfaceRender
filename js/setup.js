@@ -56,10 +56,6 @@ light2.type("Point");
 light2.position(0,-10,-10);
 light2.shadow(true);
 
-//shadow plane
-var shadowPlane = new SRMesh(scene);
-shadowPlane.updateMesh(shadowPlane.object);
-
 //objects
 var objects = [];
 let surf1 = new SRSurface(scene);
@@ -74,6 +70,10 @@ AddObject("data/surface1_1.obj", surf1);
 AddObject("data/surface1_2.obj", surf2);
 AddObject("data/surface2_1.obj", surf3);
 AddObject("data/surface2_2.obj", surf4);
+
+//shadow plane
+var shadowPlane = new SRMesh(scene);
+shadowPlane.updateMesh(shadowPlane.object);
 
 //raycaster
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
