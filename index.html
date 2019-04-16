@@ -78,7 +78,7 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test2</div>
+			<div id= 'console' >test</div>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
 				<label class="btn btn-secondary active" id = "drag">
 					<input type="radio" name="options" id="option1" autocomplete="off" checked> Drag Mode
@@ -160,11 +160,12 @@
 			//drag or select
 			var DragSet = $("#drag");
 			PMesh.on("click", function(e) {
-				dragControls.enabled = true;
 				console.log("hi");
+				dragControls.enabled = true;
 			})
 			var SelectSet = $("#select");
 			BMesh.on("click", function(e) {
+				console.log("bye");
 				dragControls.enabled = false;
 			})
 		</script>
