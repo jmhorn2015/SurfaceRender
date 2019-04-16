@@ -76,6 +76,7 @@ var shadowPlane = new SRMesh(scene);
 shadowPlane.updateMesh(shadowPlane.object);
 
 //drag controls
+/*
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
@@ -83,7 +84,7 @@ dragControls.addEventListener( 'dragstart', function (event) {
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
 } );
-
+*/
 //raycaster
 var isSelect = false;
 
@@ -91,7 +92,7 @@ document.addEventListener( 'mousedown', onDocumentMouseDown );
 function onDocumentMouseDown( event ) {    
     event.preventDefault();
 	if(isSelect){
-		dragControls.enabled = false;
+		//dragControls.enabled = false;
 		var mouse3D = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1,   
 						-( event.clientY / window.innerHeight ) * 2 + 1,  
 						0.5 );     
@@ -102,7 +103,7 @@ function onDocumentMouseDown( event ) {
 		if ( intersects.length > 0 ) {
 			intersects[ 0 ].object.material.color.setHex( 0xffffff );
 		}
-		dragControls.enabled = true;
+		//dragControls.enabled = true;
 	}
 }
 
