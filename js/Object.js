@@ -10,6 +10,7 @@ class SRObject{
 		this.object.rotation.set(x,y,z);
 	}
 	shadow(onoff){
+		console.log("Shadow");
 		this.object.castShadow = onoff;
 	}
 	get Position(){
@@ -30,7 +31,6 @@ class SRLight extends SRObject{
 		this.object = new THREE.AmbientLight(0x777777);
 		this.object.position.set(0, 0, 0);
 		scene.add( this.object );
-		this.object.opacity = 0;
 	}
 	intensity(x){
 		this.object.intensity = x;
@@ -40,6 +40,8 @@ class SRLight extends SRObject{
 		if(x = "Point"){
 			this.object = new THREE.PointLight(0xffffff);
 			this.object.castShadow = true;
+			this.object.shadowMapWidth = 2048;
+			this.object.shadowMapHeight = 2048; 
 		}
 		else{
 			this.object = new THREE.AmbientLight(0x777777);
