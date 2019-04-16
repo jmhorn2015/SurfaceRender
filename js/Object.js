@@ -211,61 +211,7 @@ class SRSurface extends SRMesh{
 	}
 }
 class SRSeedingCurve extends SRMesh{
-	extrudeSettings;
-	bigData = [];
 	constructor(filename, scene){
 		super(scene);
-		$.get(name,	function(data) {
-			var texts = data.split(" ");
-			var lineData = [];
-			var prevPos = 0;
-			var tempVal = 0;
-			var counter = 0;
-			var lineCounter = 0;
-			var x = 0;
-			var y = 0;
-			var z = 0;
-			for(var a = 0; a < texts.length; a++){
-				if(texts[a].charAt(texts[a].length-1)!=','){
-					counter++;
-					tempVal = Number(texts[a]);
-					prevPos = a+1;
-					if(counter == 1){
-						x = tempVal;
-					}
-					else if(counter == 2){
-						y = tempVal;
-					}
-					else if(counter == 3){
-						z = tempVal;
-						lineData.push(new THREE.Vector3(x,y,z));
-						counter = 0;
-					}
-				}
-				else{
-					tempVal = Number(texts[a].substring(0, texts[a].length-1));
-					z = tempVal;
-					lineData.push(new THREE.Vector3(x,y,z));
-					var draw = new THREE.CatmullRomCurve3( lineData );
-					bigData[lineCounter] = draw;
-					lineCounter++;
-					extrudeSettings = {
-						steps: 40,
-						bevelEnabled: false,
-						extrudePath: draw
-					};
-					this.geo = new THREE.ExtrudeBufferGeometry( circleShape, extrudeSettings );
-					this.mat = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff , wireframe: false } );
-					this.object = new THREE.Mesh( this.geo, this.mat );
-					scene.add( this.object );
-					lineData = [];
-					counter = 0;
-					prevPos = a+1;
-				}
-			}
-		})
-		.fail(function() {
-			alert( "error" );	
-		});
 	}
 }
