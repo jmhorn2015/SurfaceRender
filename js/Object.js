@@ -10,7 +10,7 @@ class SRObject{
 		this.object.rotation.set(x,y,z);
 	}
 	shadow(onoff){
-		this.object.recieveShadow = onoff;
+		this.object.castShadow = onoff;
 	}
 	get Position(){
 		return this.object.position;
@@ -19,7 +19,7 @@ class SRObject{
 		return this.object.rotation;
 	}
 	get Shadow(){
-		return this.object.recieveShadow;
+		return this.object.castShadow;
 	}
 	loadSettings(){
 	}
@@ -85,7 +85,7 @@ class SRMesh extends SRObject{
 		this.object = new THREE.Mesh( this.geo, this.mat);
 		this.object.position.set(0, 0, -1);
 		this.object.castShadow = false;
-		this.object.receiveShadow = false;
+		this.object.receiveShadow = true;
 	}
 	add(newobject){
 		
