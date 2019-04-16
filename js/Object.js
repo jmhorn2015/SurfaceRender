@@ -86,7 +86,7 @@ class SRMesh extends SRObject{
 		this.mat.opacity = 1;
 		this.object = new THREE.Mesh( this.geo, this.mat);
 		this.object.position.set(0, 0, -1);
-		this.object.castShadow = false;
+		this.object.castShadow = true;
 		this.object.receiveShadow = true;
 	}
 	add(newobject){
@@ -174,9 +174,6 @@ class SRMesh extends SRObject{
 		this.mat.opacity = 0.5;
 		this.object = new THREE.Mesh( this.geo, this.mat);
 		this.object.name = mesh.name;
-		this.object.position.set(0, 0, 0);
-		this.object.castShadow = false;
-		this.object.receiveShadow = false;
 		scene.add(this.object);
 		objects.push(this.object);
 	};
