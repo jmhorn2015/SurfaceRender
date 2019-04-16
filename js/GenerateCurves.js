@@ -1,7 +1,7 @@
 var extrudeSettings;
 var bigData = [];
 var texts;
-function GenerateCurves(name){
+function GenerateCurves(name, mesh){
 	$.get(name,	function(data) {
 		 texts = data.split(" ");
 		 sub();
@@ -49,10 +49,10 @@ function GenerateCurves(name){
 					extrudePath: draw
 				};
 				var geo = new THREE.ExtrudeBufferGeometry( circleShape, extrudeSettings );
-				var mat = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff , wireframe: false } );
-				var mesh = new THREE.Mesh( geo, mat );
-				mesh.name = "mesh";
-				scene.add( mesh );
+				var mat = new THREE.MeshPhongMaterial( { color: Math.random() * 0xffffff , wireframe: false } );
+				var meshtemp = new THREE.Mesh( geo, mat );
+				meshtemp.name = name;
+				mesh.updateMesh(meshtemp);
 				lineData = [];
 				counter = 0;
 				prevPos = a+1;

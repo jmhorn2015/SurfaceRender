@@ -3,7 +3,6 @@ class SRObject{
 	constructor(scene){
 		this.object = new THREE.Object3D();
 	}
-	allObjects;
 	position(x,y,z){
 		this.object.position.set(x, y, z);
 	}
@@ -22,7 +21,7 @@ class SRObject{
 	get Shadow(){
 		return this.object.recieveShadow;
 	}
-	LoadSettings(){
+	loadSettings(){
 	}
 }
 class SRLight extends SRObject{
