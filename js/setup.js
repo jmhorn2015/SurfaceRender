@@ -18,7 +18,7 @@ var camera = new THREE.PerspectiveCamera( 75, (window.innerWidth*.8)/window.inne
 var renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio);
 renderer.setSize( window.innerWidth*.8, window.innerHeight );
-renderer.shadowMapType = THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.shadowMap.enabled = true;
 renderer.shadowMapSoft = true;
 renderer.gammaInput = true;
@@ -76,37 +76,20 @@ var shadowPlane = new SRMesh(scene);
 shadowPlane.updateMesh(shadowPlane.object);
 
 //drag controls
-/*
+var isSelect = false;
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
+	if (isSelect){
+		dragControls.enabled = false;
+	}
 } );
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
-} );
-*/
-//raycaster
-var isSelect = false;
-
-document.addEventListener( 'mousedown', onDocumentMouseDown );
-function onDocumentMouseDown( event ) {    
-    event.preventDefault();
-	if(isSelect){
-		//dragControls.enabled = false;
-		var mouse3D = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1,   
-						-( event.clientY / window.innerHeight ) * 2 + 1,  
-						0.5 );     
-		var raycaster =  new THREE.Raycaster();                                        
-		raycaster.setFromCamera( mouse3D, camera );
-		var intersects = raycaster.intersectObjects( objects );
-		console.log(intersects)
-		if ( intersects.length > 0 ) {
-			intersects[ 0 ].object.material.color.setHex( 0xffffff );
-		}
-		//dragControls.enabled = true;
+		if (isSelect){
+		dragControls.enabled = true;
 	}
-}
-
+} );
 
 camera.position.set( 0, 0, 2);
 controls.update();
