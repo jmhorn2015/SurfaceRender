@@ -174,6 +174,7 @@ class SRMesh extends SRObject{
 		this.mat.opacity = 0.5;
 		this.object = new THREE.Mesh( this.geo, this.mat);
 		this.object.name = mesh.name;
+		console.log(this.object.receiveShadow);
 		scene.add(this.object);
 		objects.push(this.object);
 	};
