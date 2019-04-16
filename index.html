@@ -33,7 +33,7 @@
 		<div id = 'UI'>
 			<p>Render Settings:</p>
 			<label for="Material">Material Type:</label>
-			<div class="btn-group btn-group-toggle" data-toggle="buttons">
+			<div id = "materialButtons"class="btn-group btn-group-toggle" data-toggle="buttons">
 				<label class="btn btn-secondary active" id = "phong">
 					<input type="radio" name="options" id="option1" autocomplete="off" checked> Phong
 				</label>
@@ -78,8 +78,8 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test</div>
-			<div class="btn-group btn-group-toggle" data-toggle="buttons">
+			<div id= 'console' >test2</div>
+			<div id = "modeButtons" class="btn-group btn-group-toggle" data-toggle="buttons">
 				<label class="btn btn-secondary active" id = "drag">
 					<input type="radio" name="options" id="option1" autocomplete="off" checked> Drag Mode
 				</label>
@@ -98,6 +98,14 @@
 			
 			$(UI).innerHeight(window.innerHeight);
 			$(UI).innerWidth(window.innerWidth/5);
+			
+			//Radio Handler
+			$("#modeButtons .btn").on('click',function(){
+				$("#materialButtons").button('reset');
+			});
+			$("#materialButtons .btn").on('click',function(){
+				$("#modeButtons").button('reset');
+			});
 			
 			//Material
 			var PMesh = $("#phong");
