@@ -3,6 +3,7 @@ class SRObject{
 	constructor(scene){
 		this.object = new THREE.Object3D();
 	}
+	allObjects;
 	position(x,y,z){
 		this.object.position.set(x, y, z);
 	}
@@ -10,7 +11,7 @@ class SRObject{
 		this.object.rotation.set(x,y,z);
 	}
 	shadow(onoff){
-		this.object.castShadow = onoff;
+		this.object.recieveShadow = onoff;
 	}
 	get Position(){
 		return this.object.position;
@@ -19,17 +20,20 @@ class SRObject{
 		return this.object.rotation;
 	}
 	get Shadow(){
-		return this.object.castShadow;
+		return this.object.recieveShadow;
 	}
-	loadSettings(){
+	LoadSettings(){
 	}
 }
-class SRLight extends SRObject{
+class SRlight extends SRObject{
 	constructor(scene){
 		super(scene);
 		this.object = new THREE.AmbientLight(0x777777);
 		this.object.position.set(0, 0, 0);
+		this.object.castShadow = false;
+		this.object.receiveShadow = false;
 		scene.add( this.object );
+		this.object.opacity = 0;
 	}
 	intensity(x){
 		this.object.intensity = x;
@@ -37,15 +41,14 @@ class SRLight extends SRObject{
 	type(x){
 		var temp = this.object;
 		if(x = "Point"){
-			this.object = new THREE.PointLight(0xffffff);
-			this.object.castShadow = true;
-			this.object.shadow.mapSize.width = 2048;
-			this.object.shadow.mapSize.height = 2048; 
+			this.object = new Three.PointLight(0xffffff);
 		}
 		else{
 			this.object = new THREE.AmbientLight(0x777777);
 		}
-		this.object.position.set(temp.position);
+		this.object.position = temp.position;
+		this.object.castShadow = temp.castShadow;
+		this.object.receiveShadow = temp.recieveShadow;
 		scene.add( this.object );
 		this.object.opacity = temp.opacity;
 		
@@ -82,37 +85,40 @@ class SRMesh extends SRObject{
 			this.geo = new THREE.BoxGeometry(5,5,5);
 		}
 		this.mat.transparent = true;
-		this.mat.opacity = 1;
+		this.mat.opacity = 0;
 		this.object = new THREE.Mesh( this.geo, this.mat);
 		this.object.position.set(0, 0, -1);
-		this.object.castShadow = true;
-		this.object.receiveShadow = true;
+		this.object.castShadow = false;
+		this.object.receiveShadow = false;
 	}
 	add(newobject){
 		
 	}
 	color(hue){
-		this.mat.color.setHSL(hue, 1, .5);
+		this.object.color.setHSL(hue/100, 1, .5);
 	}
 	material(x){
-		var oldMat = this.mat;
-        switch(x){
-			case 0:
-				this.mat = new THREE.MeshPhongMaterial( { color: 0x808080, dithering: true } );
-				break;
-			case 1:
-				this.mat = new THREE.MeshBasicMaterial( { color: 0x808080, dithering: true } );
-				break;
-			case 2:
-				this.mat = new THREE.MeshLambertMaterial( { color: 0x808080, dithering: true } );
-				break;
-		}
-		this.mat.side = THREE.BackSide;
-        this.mat.color = new THREE.Color(oldMat.color);
-		this.mat.transparent = true;
-		this.mat.opacity = oldMat.opacity;
-		this.mat.map = oldMat.map;
-		this.object.material = this.mat;
+		this.object.traverse( function ( child ) {
+        	if ( child instanceof THREE.Mesh) {
+				var oldMat = child.material;
+            	switch(x){
+					case 0:
+						child.material = new THREE.MeshPhongMaterial( { color: 0x808080, dithering: true } );
+						break;
+					case 1:
+						child.material = new THREE.MeshBasicMaterial( { color: 0x808080, dithering: true } );
+						break;
+					case 2:
+						child.material = new THREE.MeshLambertMaterial( { color: 0x808080, dithering: true } );
+						break;
+				}
+				child.material.side = THREE.BackSide;
+            	child.material.color = new THREE.Color(oldMat.color);
+				child.material.transparent = true;
+				child.material.opacity = oldMat.opacity;
+				child.material.map = oldMat.map;
+        	}
+    	});
 	}
 	texture(onoff){
 		var loader = new THREE.TextureLoader();
@@ -137,7 +143,7 @@ class SRMesh extends SRObject{
 		);
 		
 	}
-	reflective(onoff, scene){
+	refletive(onoff){
 		var path = "data/skybox/";
 		var urls = [
 			path + "px.jpg", path + "nx.jpg",
@@ -147,7 +153,7 @@ class SRMesh extends SRObject{
 		var textureCube = new THREE.CubeTextureLoader().load( urls );
 		textureCube.format = THREE.RGBFormat;
 		this.object.traverse( function ( child ) {
-			if(onoff){
+			if(bool){
 				scene.background = textureCube;
 				child.material.envMap = textureCube;
 				child.material.needsUpdate = true;
@@ -172,8 +178,9 @@ class SRMesh extends SRObject{
 		this.mat.transparent = true;
 		this.mat.opacity = 0.5;
 		this.object = new THREE.Mesh( this.geo, this.mat);
-		this.object.receiveShadow = mesh.receiveShadow;
-		this.object.name = mesh.name;
+		this.object.position.set(0, 0, 0);
+		this.object.castShadow = false;
+		this.object.receiveShadow = false;
 		scene.add(this.object);
 		objects.push(this.object);
 	};
@@ -210,7 +217,61 @@ class SRSurface extends SRMesh{
 	}
 }
 class SRSeedingCurve extends SRMesh{
+	extrudeSettings;
+	bigData = [];
 	constructor(filename, scene){
 		super(scene);
+		$.get(name,	function(data) {
+			var texts = data.split(" ");
+			var lineData = [];
+			var prevPos = 0;
+			var tempVal = 0;
+			var counter = 0;
+			var lineCounter = 0;
+			var x = 0;
+			var y = 0;
+			var z = 0;
+			for(var a = 0; a < texts.length; a++){
+				if(texts[a].charAt(texts[a].length-1)!=','){
+					counter++;
+					tempVal = Number(texts[a]);
+					prevPos = a+1;
+					if(counter == 1){
+						x = tempVal;
+					}
+					else if(counter == 2){
+						y = tempVal;
+					}
+					else if(counter == 3){
+						z = tempVal;
+						lineData.push(new THREE.Vector3(x,y,z));
+						counter = 0;
+					}
+				}
+				else{
+					tempVal = Number(texts[a].substring(0, texts[a].length-1));
+					z = tempVal;
+					lineData.push(new THREE.Vector3(x,y,z));
+					var draw = new THREE.CatmullRomCurve3( lineData );
+					bigData[lineCounter] = draw;
+					lineCounter++;
+					extrudeSettings = {
+						steps: 40,
+						bevelEnabled: false,
+						extrudePath: draw
+					};
+					this.geo = new THREE.ExtrudeBufferGeometry( circleShape, extrudeSettings );
+					this.mat = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff , wireframe: false } );
+					this.object = new THREE.Mesh( this.geo, this.mat );
+					scene.add( this.object );
+					lineData = [];
+					counter = 0;
+					prevPos = a+1;
+				}
+			}
+		})
+		.fail(function() {
+			alert( "error" );	
+		});
 	}
 }
