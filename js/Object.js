@@ -13,7 +13,7 @@ class SRObject{
 		this.object.castShadow = onoff;
 	}
 	recvShadow(onoff){
-		this.object.recieveShadow = onoff;
+		this.object.receiveShadow = onoff;
 	}
 	get Position(){
 		return this.object.position;
