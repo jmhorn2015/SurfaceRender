@@ -56,7 +56,7 @@ var light = new SRLight(scene);
 var light2 = new SRLight(scene);
 light2.type("Point");
 light2.position(0,-10,10);
-light2.shadow(true);
+light2.castShadow(true);
 
 //objects
 var objects = [];
