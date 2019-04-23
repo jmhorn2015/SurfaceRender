@@ -42,8 +42,8 @@ class SRLight extends SRObject{
 		if(x = "Point"){
 			this.object = new THREE.PointLight(0xffffff);
 			this.object.castShadow = true;
-			this.object.shadow.mapSize.width = 2048;
-			this.object.shadow.mapSize.height = 2048; 
+			this.object.shadow.mapSize.width = 1024;
+			this.object.shadow.mapSize.height = 1024; 
 		}
 		else{
 			this.object = new THREE.AmbientLight(0x777777);

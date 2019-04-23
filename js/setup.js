@@ -18,8 +18,8 @@ var camera = new THREE.PerspectiveCamera( 75, (window.innerWidth*.8)/window.inne
 var renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio);
 renderer.setSize( window.innerWidth*.8, window.innerHeight );
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.shadowMapSoft = true;
 renderer.gammaInput = true;
 renderer.gammaOutput = true;
@@ -56,7 +56,6 @@ var light = new SRLight(scene);
 var light2 = new SRLight(scene);
 light2.type("Point");
 light2.position(0,-10,10);
-light2.castShadow(true);
 
 //objects
 var objects = [];
