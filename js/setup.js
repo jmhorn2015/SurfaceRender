@@ -27,7 +27,7 @@ scene.background = new THREE.Color('white');
 container.appendChild( renderer.domElement );
 
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
-controls.addEventListener('change', animate);
+//controls.addEventListener('change', animate);
 controls.enableKeys = false;
 camera.position.set( 0, 0, 2);
 controls.update();
@@ -107,3 +107,4 @@ function animate() {
 	stats.end();
 	renderer2.render( scene2, camera2 );
 };
+animate();
