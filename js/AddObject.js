@@ -5,7 +5,8 @@ function AddObject(name2, surface){
         	if ( child instanceof THREE.Mesh ) {
             	//child.material.side = THREE.BackSide;
             	child.material.color.setHex(0x808080);
-				child.material.transparent = true;
+				//child.material.transparent = true;
+				child.material.alphatest = .5;
 				child.material.opacity = .5;
 				child.recieveShadow = false;
 				child.name = name2;
