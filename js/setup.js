@@ -87,7 +87,7 @@ dragControls.addEventListener( 'dragend', function (event) {
 } );
 
 camera.position.set( 0, 0, 2);
-controls.update();
+//controls.update();
 
 var animate = function () {
 	console.log("update");
