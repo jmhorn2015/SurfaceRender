@@ -81,8 +81,7 @@ class SRMesh extends SRObject{
 		else if(shape == "Box"){
 			this.geo = new THREE.BoxGeometry(5,5,5);
 		}
-		//this.mat.transparent = true;
-		this.mat.alphatest = .5;
+		this.mat.transparent = true;
 		this.mat.opacity = 1;
 		this.object = new THREE.Mesh( this.geo, this.mat);
 		this.object.position.set(0, 0, -1);
@@ -139,16 +138,16 @@ class SRMesh extends SRObject{
 		
 	}
 	reflective(onoff, scene){
-		var path = "data/skybox/";
-		var urls = [
-			path + "px.jpg", path + "nx.jpg",
-			path + "py.jpg", path + "ny.jpg",
-			path + "pz.jpg", path + "nz.jpg"
-		];
-		var textureCube = new THREE.CubeTextureLoader().load( urls );
-		textureCube.format = THREE.RGBFormat;
 		this.object.traverse( function ( child ) {
 			if(onoff){
+				var path = "data/skybox/";
+				var urls = [
+					path + "px.jpg", path + "nx.jpg",
+					path + "py.jpg", path + "ny.jpg",
+					path + "pz.jpg", path + "nz.jpg"
+				];
+				var textureCube = new THREE.CubeTextureLoader().load( urls );
+				textureCube.format = THREE.RGBFormat;
 				scene.background = textureCube;
 				child.material.envMap = textureCube;
 				child.material.needsUpdate = true;
@@ -170,8 +169,7 @@ class SRMesh extends SRObject{
 	updateMesh(mesh){
 		this.geo = mesh.geometry;
 		this.mat = mesh.material;
-		//this.mat.transparent = true;
-		this.mat.alphatest = .5;
+		this.mat.transparent = true;
 		this.mat.opacity = 0.5;
 		this.object = new THREE.Mesh( this.geo, this.mat);
 		this.object.receiveShadow = mesh.receiveShadow;
