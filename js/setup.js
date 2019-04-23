@@ -27,6 +27,7 @@ scene.background = new THREE.Color('white');
 container.appendChild( renderer.domElement );
 
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
+controls.addEventListener("change", animate);
 controls.enableKeys = false;
 
 //axis
@@ -81,9 +82,11 @@ dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
 	console.log("hi");
 } );
+dragControls.addEventListener("change", animate);
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
 } );
+
 
 camera.position.set( 0, 0, 2);
 controls.update();
@@ -106,4 +109,3 @@ var animate = function () {
 	stats.end();
 	renderer2.render( scene2, camera2 );
 };
-animate();

@@ -78,7 +78,7 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test</div>
+			<div id= 'console' >test2</div>
 			<div id = "modeButtons" class="btn-group btn-group-toggle" data-toggle="buttons">
 				<label class="btn btn-secondary active" id = "drag">
 					<input type="radio" name="options" id="option1" autocomplete="off" checked> Drag Mode
@@ -111,32 +111,38 @@
 			var PMesh = $("#phong");
 			PMesh.on("click", function(e) {
 				surf1.material(0);
+				animate();
 			})
 			var BMesh = $("#basic");
 			BMesh.on("click", function(e) {
 				surf1.material(1);
+				animate();
 			})
 			var LMesh = $("#lam");
 			LMesh.on("click", function(e) {
 				surf1.material(2);
+				animate();
 			})
 			//Transparency
 			var Tslider = $("#TText");
 			Tslider.on("input change", function(e) {
 				num = $(this).val();
 				surf1.transparency(num/100); 
+				animate();
 			})
 			//Hue
 			var Hslider = $("#HText");
 			Hslider.on("input change", function(e) {
 				num2 = $(this).val();
 				surf1.color(num2/100);
+				animate();
 			})
 			//Light
 			var Lslider = $("#LText");
 			Lslider.on("input change", function(e) {
 				num3 = $(this).val();
 				Light(num3);
+				animate();
 			})
 			//Texture
 			var Txture = $("#texture");
@@ -144,6 +150,7 @@
 			Txture.change(function(e) {
 				txtBool = !txtBool;
 				surf1.texture(txtBool);
+				animate();
 			})
 			//Shadow
 			var Shad = $("#shadow");
@@ -151,6 +158,7 @@
 			Shad.change(function(e) {
 				shadBool = !shadBool;
 				surf1.shadow(shadBool);
+				animate();
 			})
 			//Reflective
 			var Reflex = $("#reflect");
@@ -158,12 +166,14 @@
 			Reflex.change(function(e) {
 				reBool = !reBool;
 				surf1.reflective(reBool, scene);
+				animate();
 			})
 			//reset
 			var Reset = $("#reset");
 			Reset.click(function(e) {
 				console.log("click");
 				surf1.position(0,0,0);
+				animate();
 			})
 			
 			//drag or select
