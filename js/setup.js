@@ -15,8 +15,6 @@ container.appendChild( stats.dom );
 //Scene Setup
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, (window.innerWidth*.8)/window.innerHeight, 0.1, 1000 );
-camera.position.set( 0, 0, 2);
-controls.update();
 var renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio);
 renderer.setSize( window.innerWidth*.8, window.innerHeight );
@@ -31,6 +29,8 @@ container.appendChild( renderer.domElement );
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
 controls.addEventListener('change', animate);
 controls.enableKeys = false;
+camera.position.set( 0, 0, 2);
+controls.update();
 
 //axis
 var axes = document.getElementById( 'inset' );
