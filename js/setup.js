@@ -15,6 +15,8 @@ container.appendChild( stats.dom );
 //Scene Setup
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, (window.innerWidth*.8)/window.innerHeight, 0.1, 1000 );
+camera.position.set( 0, 0, 2);
+controls.update();
 var renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio);
 renderer.setSize( window.innerWidth*.8, window.innerHeight );
@@ -86,19 +88,16 @@ dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
 } );
 
-camera.position.set( 0, 0, 2);
-requestAnimationFrame( animate );
-controls.update();
-camera2.position.copy( camera.position );
-camera2.position.sub( controls.target );
-camera2.position.setLength( 15 );
-camera2.lookAt( scene2.position );
-stats.begin();
-renderer.render( scene, camera );
-stats.end();
-renderer2.render( scene2, camera2 );
+	camera2.position.copy( camera.position );
+	camera2.position.sub( controls.target );
+	camera2.position.setLength( 15 );
+    camera2.lookAt( scene2.position );
+	stats.begin();
+	renderer.render( scene, camera );
+	stats.end();
+	renderer2.render( scene2, camera2 );
 
-var animate = function () {
+function animate() {
 	console.log("update");
 	if(loading){
 		$("#loading").addClass('spinner-border');
