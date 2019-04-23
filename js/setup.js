@@ -26,6 +26,9 @@ renderer.gammaOutput = true;
 scene.background = new THREE.Color('white');
 container.appendChild( renderer.domElement );
 
+var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
+controls.enableKeys = false;
+
 //axis
 var axes = document.getElementById( 'inset' );
 var renderer2 = new THREE.WebGLRenderer();
@@ -37,13 +40,6 @@ var camera2 = new THREE.PerspectiveCamera( 50, 1, 1, 1000 );
 camera2.up = camera.up;
 var axesHelper = new THREE.AxesHelper( 5 );
 scene2.add( axesHelper );
-
-
-
-//trackball controls
-var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
-controls.addEventListener("change", animate);
-controls.enableKeys = false;
 
 //box
 var geometry = new THREE.BoxGeometry( 10, 5, 10);
@@ -79,20 +75,18 @@ AddObject("data/surface2_2.obj", surf4);
 var shadowPlane = new SRMesh(scene);
 shadowPlane.updateMesh(shadowPlane.object);
 
-//More camera controls
-camera.position.set( 0, 0, 2);
-controls.update();
-
 //drag controls
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
 	console.log("hi");
 } );
-dragControls.addEventListener("change", animate);
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
 } );
+
+camera.position.set( 0, 0, 2);
+controls.update();
 
 var animate = function () {
 	console.log("update");
