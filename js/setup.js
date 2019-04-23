@@ -18,21 +18,13 @@ var camera = new THREE.PerspectiveCamera( 75, (window.innerWidth*.8)/window.inne
 var renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio);
 renderer.setSize( window.innerWidth*.8, window.innerHeight );
-renderer.shadowMapType = THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.shadowMap.enabled = true;
 renderer.shadowMapSoft = true;
 renderer.gammaInput = true;
 renderer.gammaOutput = true;
 scene.background = new THREE.Color('white');
 container.appendChild( renderer.domElement );
-
-var circleRadius = .01;
-var circleShape = new THREE.Shape();
-circleShape.moveTo( 0, circleRadius );
-circleShape.quadraticCurveTo( circleRadius, circleRadius, circleRadius, 0 );
-circleShape.quadraticCurveTo( circleRadius, - circleRadius, 0, - circleRadius );
-circleShape.quadraticCurveTo( - circleRadius, - circleRadius, - circleRadius, 0 );
-circleShape.quadraticCurveTo( - circleRadius, circleRadius, 0, circleRadius );
 
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
 controls.enableKeys = false;
@@ -57,30 +49,43 @@ var wireframe = new THREE.LineSegments( edge, mat );
 wireframe.name = "plane";
 scene.add( wireframe );
 
+//lights
+var light = new SRLight(scene);
+var light2 = new SRLight(scene);
+light2.type("Point");
+light2.position(0,-10,10);
+light2.shadow(true);
+
 //objects
 var objects = [];
 let surf1 = new SRSurface(scene);
 let surf2 = new SRSurface(scene);
 let surf3 = new SRSurface(scene);
 let surf4 = new SRSurface(scene);
-//let line1 = new SRSeedingCurve("data/seeding_curve_1.txt", scene);
-GenerateCurves("data/seeding_curve_2.txt");
+let line1 = new SRSeedingCurve(scene);
+let line2 = new SRSeedingCurve(scene);
+GenerateCurves("data/seeding_curve_1.txt", line1);
+GenerateCurves("data/seeding_curve_2.txt", line2);
 AddObject("data/surface1_1.obj", surf1);
 AddObject("data/surface1_2.obj", surf2);
 AddObject("data/surface2_1.obj", surf3);
 AddObject("data/surface2_2.obj", surf4);
 
-//raycaster
+//shadow plane
+var shadowPlane = new SRMesh(scene);
+shadowPlane.updateMesh(shadowPlane.object);
+
+/*
+//drag controls
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
-	startColor = event.object.material.color.getHex();
-	event.object.material.color.setHex(0xFF0000);
+	console.log("hi");
 } );
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
-	event.object.material.color.setHex(startColor);
 } );
+*/
 
 camera.position.set( 0, 0, 2);
 controls.update();

@@ -17,7 +17,7 @@
 		<!--Three.js-->
 		<script src="js/three.js"></script>
 		<script src="js/TrackballControls.js"></script>
-		<script src="js/DragControls.js"></script>
+		<!--<script src="js/DragControls.js"></script>-->
 		<script src="js/stats.min.js"></script>
 		<script src="js/OBJLoader.js"></script>
 		<script src="js/CubeTextureLoader.js"></script>
@@ -33,7 +33,7 @@
 		<div id = 'UI'>
 			<p>Render Settings:</p>
 			<label for="Material">Material Type:</label>
-			<div class="btn-group btn-group-toggle" data-toggle="buttons">
+			<div id = "materialButtons"class="btn-group btn-group-toggle" data-toggle="buttons">
 				<label class="btn btn-secondary active" id = "phong">
 					<input type="radio" name="options" id="option1" autocomplete="off" checked> Phong
 				</label>
@@ -74,10 +74,19 @@
 					Reflective:
 				</label>
 			</div>
+			<button type="button" class="btn btn-primary btn-lg btn-block" id="reset">Reset Position</button>
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test2</div>
+			<div id= 'console' >test4</div>
+			<div id = "modeButtons" class="btn-group btn-group-toggle" data-toggle="buttons">
+				<label class="btn btn-secondary active" id = "drag">
+					<input type="radio" name="options" id="option1" autocomplete="off" checked> Drag Mode
+				</label>
+				<label class="btn btn-secondary" id = "select">
+					<input type="radio" name="options" id="option2" autocomplete="off"> Select Mode
+				</label>
+			</div>
 		</div>
 		<script>
 			//Transparency
@@ -89,6 +98,14 @@
 			
 			$(UI).innerHeight(window.innerHeight);
 			$(UI).innerWidth(window.innerWidth/5);
+			
+			//Radio Handler
+			$("#modeButtons .btn").on('click',function(){
+				$("#materialButtons").button('reset');
+			});
+			$("#materialButtons .btn").on('click',function(){
+				$("#modeButtons").button('reset');
+			});
 			
 			//Material
 			var PMesh = $("#phong");
@@ -140,8 +157,25 @@
 			var reBool = false;
 			Reflex.change(function(e) {
 				reBool = !reBool;
-				surf1.reflective(reBool);
+				surf1.reflective(reBool, scene);
 			})
+			//reset
+			var Reset = $("#reset");
+			Reset.click(function(e) {
+				console.log("click");
+				surf1.position(0,0,0);
+			})
+			/*
+			//drag or select
+			var DragSet = $("#drag");
+			DragSet.on("click", function(e) {
+				dragControls.enabled = true;
+			})
+			var SelectSet = $("#select");
+			SelectSet.on("click", function(e) {
+				dragControls.enabled = false;
+			})
+			*/
 		</script>
 	</body>
 </html>

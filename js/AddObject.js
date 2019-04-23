@@ -7,7 +7,7 @@ function AddObject(name2, surface){
             	child.material.color.setHex(0x808080);
 				child.material.transparent = true;
 				child.material.opacity = .5;
-				child.recieveShadow = true;
+				child.recieveShadow = false;
 				child.name = name2;
 				surface.updateMesh(child);
         	}
