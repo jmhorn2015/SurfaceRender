@@ -87,7 +87,6 @@ dragControls.addEventListener( 'dragend', function (event) {
 } );
 
 function animate() {
-	console.log("update");
 	if(loading){
 		$("#loading").addClass('spinner-border');
 	}
