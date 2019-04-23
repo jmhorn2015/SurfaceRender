@@ -80,7 +80,6 @@ shadowPlane.updateMesh(shadowPlane.object);
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
 	controls.enabled = false;
-	console.log("hi");
 } );
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
