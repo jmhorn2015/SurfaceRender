@@ -38,24 +38,7 @@ camera2.up = camera.up;
 var axesHelper = new THREE.AxesHelper( 5 );
 scene2.add( axesHelper );
 
-var animate = function () {
-	if(loading){
-		$("#loading").addClass('spinner-border');
-	}
-	else{
-		$("#loading").removeClass('spinner-border');
-	}
-	requestAnimationFrame( animate );
-	controls.update();
-	camera2.position.copy( camera.position );
-	camera2.position.sub( controls.target );
-	camera2.position.setLength( 15 );
-    camera2.lookAt( scene2.position );
-	stats.begin();
-	renderer.render( scene, camera );
-	stats.end();
-	renderer2.render( scene2, camera2 );
-};
+
 
 //trackball controls
 var controls = new THREE.TrackballControls( camera, document.getElementById("three"));
@@ -110,3 +93,24 @@ dragControls.addEventListener("change", animate);
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
 } );
+
+var animate = function () {
+	console.log("update");
+	if(loading){
+		$("#loading").addClass('spinner-border');
+	}
+	else{
+		$("#loading").removeClass('spinner-border');
+	}
+	requestAnimationFrame( animate );
+	controls.update();
+	camera2.position.copy( camera.position );
+	camera2.position.sub( controls.target );
+	camera2.position.setLength( 15 );
+    camera2.lookAt( scene2.position );
+	stats.begin();
+	renderer.render( scene, camera );
+	stats.end();
+	renderer2.render( scene2, camera2 );
+};
+animate();
