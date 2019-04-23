@@ -78,7 +78,7 @@
 			<div role="status" id = "loading">
 				<span class="sr-only">Loading...</span>
 			</div>
-			<div id= 'console' >test2</div>
+			<div id= 'console' >test</div>
 			<div id = "modeButtons" class="btn-group btn-group-toggle" data-toggle="buttons">
 				<label class="btn btn-secondary active" id = "drag">
 					<input type="radio" name="options" id="option1" autocomplete="off" checked> Drag Mode
@@ -150,7 +150,8 @@
 			var shadBool = false;
 			Shad.change(function(e) {
 				shadBool = !shadBool;
-				surf1.shadow(shadBool);
+				surf1.castShadow(shadBool);
+				shadowplane.recvShadow(shadBool);
 			})
 			//Reflective
 			var Reflex = $("#reflect");

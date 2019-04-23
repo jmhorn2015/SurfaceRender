@@ -9,8 +9,11 @@ class SRObject{
 	rotate(x,y,z){
 		this.object.rotation.set(x,y,z);
 	}
-	shadow(onoff){
+	castShadow(onoff){
 		this.object.castShadow = onoff;
+	}
+	recvShadow(onoff){
+		this.object.recieveShadow = onoff;
 	}
 	get Position(){
 		return this.object.position;
