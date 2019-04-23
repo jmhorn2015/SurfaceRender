@@ -75,7 +75,6 @@ AddObject("data/surface2_2.obj", surf4);
 var shadowPlane = new SRMesh(scene);
 shadowPlane.updateMesh(shadowPlane.object);
 
-/*
 //drag controls
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 dragControls.addEventListener( 'dragstart', function (event) {
@@ -85,7 +84,6 @@ dragControls.addEventListener( 'dragstart', function (event) {
 dragControls.addEventListener( 'dragend', function (event) {
 	controls.enabled = true;
 } );
-*/
 
 camera.position.set( 0, 0, 2);
 controls.update();
