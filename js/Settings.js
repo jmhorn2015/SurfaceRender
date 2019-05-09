@@ -92,7 +92,7 @@ function Shadow(bool){
 	for( var x = 0; x < arr.length; x++){
 		var object = arr[x];
 		object.traverse( function ( child ) {
-        	if ( child instanceof THREE.Mesh & object.name == "surface") {
+        	if ( child instanceof THREE.Mesh & object.name != "plane") {
 				if(bool){
 					child.castShadow = true;
 					materialP.opacity = 1;
@@ -102,6 +102,16 @@ function Shadow(bool){
 					materialP.opacity = 0;
 				}
         	}
+			else if( child instanceof THREE.Mesh) {
+				if(bool){
+					child.recieveShadow = true;
+					materialP.opacity = 1;
+				}
+				else{
+					child.recieveShadow = false;
+					materialP.opacity = 0;
+				}
+			}
     	});
 	}
 };

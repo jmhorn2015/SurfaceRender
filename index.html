@@ -150,8 +150,7 @@
 			var shadBool = false;
 			Shad.change(function(e) {
 				shadBool = !shadBool;
-				surf1.castShadow(shadBool);
-				shadowPlane.recvShadow(shadBool);
+				Shadow(shadBool);
 			})
 			//Reflective
 			var Reflex = $("#reflect");
